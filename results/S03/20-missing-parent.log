@@ -1,0 +1,4 @@
+﻿build/no-such-s03-directory/output.csv: CSV I/O failed; output may be incomplete
+PASS 80 unique columns: independent names/order/units contract
+FAIL open requested CSV (parent must already exist)
+FAIL logger: passed=1 failed=1

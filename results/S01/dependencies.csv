@@ -1,0 +1,4 @@
+﻿"Object","BeforeTicks","AfterTicks","Result"
+"build/src/main.o","639276544861031739","639276544876624319","PASS"
+"build/debug/src/main.o","639276544865991892","639276544881439733","PASS"
+"build/tools/tools/char_main.o","639276544863451776","639276544879024461","PASS"

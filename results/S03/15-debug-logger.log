@@ -1,0 +1,40 @@
+﻿PASS 80 unique columns: independent names/order/units contract
+PASS open requested CSV (parent must already exist)
+PASS write known initial snapshot with h=0
+PASS logging leaves inputs/state/eval/diagnostics byte-identical
+PASS step-end t+h and stage diagnostics serialize without mutation
+PASS two rows explicitly flushed and closed successfully
+PASS C readback: exact header/row width and 160 independent numeric expectations
+  CSV=results/S03/logger_fixture_debug.csv rows=2 columns=80 values_read=160 max_abs_error=0
+  fixture only: t=2 -> t+h=2.125; raw p=[-123,19999.999], protected=[20000,20001];
+  k4 limit_hit=1 / converged=0 / count=80; final converged=1; eval_status=4 retained.
+  These are synthetic serialization values, not an engine simulation or solver test.
+PASS row before header rejected
+PASS duplicate header rejected without additional bytes
+PASS reinitialization of active logger rejected; original sink released
+PASS repeated close does not double-close
+PASS write after close rejected
+PASS injected header write failure reported
+PASS I/O error remains sticky; retries suppressed; resource closes
+PASS injected data write failure not counted as successful row
+PASS injected explicit flush failure returned and closed
+PASS buffered failure during final flush returned; close still executed
+PASS injected close failure returned
+PASS real fopen failure: no platform mkdir fallback
+PASS null/invalid lifecycle arguments reported
+PASS null snapshot rejected before write
+PASS missing observation pointer rejected
+PASS boundary time cannot be mistaken for final time
+PASS negative step duration rejected
+PASS nonfinite time rejected
+PASS overflowing final time rejected
+PASS positive h lost to time rounding rejected
+PASS NaN value rejected without partial row
+PASS infinite observation rejected without partial row
+PASS disabled iteration cannot claim convergence
+PASS limit hit and convergence cannot both be true
+PASS nonboolean iteration flag rejected
+PASS negative iteration count rejected
+PASS negative increment magnitude rejected
+PASS 17-digit formatter round-trips finite extremes, adjacent double and signed zero
+PASS logger: passed=35 failed=0

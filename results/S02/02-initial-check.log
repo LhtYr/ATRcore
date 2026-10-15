@@ -1,0 +1,119 @@
+./build/char.exe check
+PASS S02 build smoke: C standard=201112; exp(0)=1; expected=1; error=0
+PASS exact 4/4/5 dimensions; all 13 fields compile-time double
+PASS contract field order
+PASS default inputs: Pa, kg/s LOX, kg/s fuel, Pa, N m
+PASS initial units: rad, rad/s, Pa, Pa; no conversion or projection
+PASS reference software J_sum/b_sum
+PASS zero initialized evaluation is not success
+PASS 50-node diagnostics; 3 local iteration values
+PASS Cp source and turbine Cp remain separate data
+Units are explicit header/config contracts, not runtime dimensional types.
+No physical evaluator, torque calculation or RK4 integration tested in S02.
+PASS contracts: passed=8 failed=0
+PASS five file inputs load in declared SI units
+PASS all state/shaft bindings, whitespace/CRLF/comments; low positive pressures not clamped
+PASS signed load is retained; EOF without newline
+  rejection line=0 message=missing required key: input.p_chamber
+PASS input.p_chamber = 3600000
+
+  rejection line=0 message=missing required key: input.W_ox
+PASS input.W_ox = 2.05
+
+  rejection line=0 message=missing required key: input.Wg
+PASS input.Wg = 5.1
+
+  rejection line=0 message=missing required key: input.p_out
+PASS input.p_out = 100000
+
+  rejection line=0 message=missing required key: input.T_load
+PASS input.T_load = 12
+
+  rejection line=1 message=invalid finite number: input.p_chamber
+PASS input.p_chamber=nan
+
+  rejection line=1 message=invalid finite number: input.Wg
+PASS input.Wg=inf
+
+  rejection line=1 message=invalid finite number: input.W_ox
+PASS input.W_ox=1e9999
+
+  rejection line=1 message=invalid finite number: input.Wg
+PASS input.Wg=1e-9999
+
+  rejection line=1 message=invalid finite number: input.Wg
+PASS input.Wg=1junk
+
+  rejection line=1 message=invalid finite number: input.Wg
+PASS input.Wg=
+
+  rejection line=1 message=expected key=value
+PASS input.Wg 5
+
+  rejection line=1 message=unsupported key: unknown
+PASS unknown=1
+
+  rejection line=6 message=duplicate key: input.Wg
+PASS duplicate file keys rejected atomically
+  rejection line=0 message=missing required key: boundary.delay_s
+PASS ramp requires explicit times and five starts
+  rejection line=0 message=cannot open configuration: build/no-such-s02-directory/input.cfg
+PASS missing file rejected atomically
+  rejection line=1 message=line too long
+PASS oversize line rejected
+  rejection line=1 message=NUL byte in file
+PASS embedded NUL rejected
+PASS defaults < file < CLI regardless of argument order; last CLI set wins
+PASS requested flows retained; positive resisting load retained
+PASS input.p_chamber=0
+PASS input.p_out=-1
+PASS initial.p_plenum=0
+PASS initial.p_downstream=-2
+PASS initial.theta_mech=nan
+PASS initial.omega_mech=inf
+PASS shaft.J_sum=0
+PASS shaft.b_sum=-1
+PASS boundary.delay_s=-1
+PASS boundary.duration_s=-1
+PASS boundary.ramp_enabled=0.5
+PASS boundary.ramp_enabled=2
+PASS input.Wg=nan
+PASS p23_total=1
+PASS T23_total=1
+PASS W23=1
+PASS motor.R=1
+PASS pump.J=1
+PASS control_dt=1
+PASS control_mode=1
+PASS enable_controller=1
+PASS enable_inverter=1
+PASS malformed CLI rejected
+PASS CLI cannot mask incomplete file
+PASS temporary C fixture removed
+PASS params: passed=48 failed=0
+PASS ramp sample file loads
+  t=0 input=[2900000,0,0,100000,4]
+PASS five-channel independent expected sample
+  t=0.5 input=[2900000,0,0,100000,4]
+PASS five-channel independent expected sample
+  t=1 input=[2900000,1.6000000000000001,4.0999999999999996,100000,4]
+PASS five-channel independent expected sample
+  t=2 input=[3250000,1.825,4.5999999999999996,110000,8]
+PASS five-channel independent expected sample
+  t=3 input=[3600000,2.0499999999999998,5.0999999999999996,120000,12]
+PASS five-channel independent expected sample
+  t=5 input=[3600000,2.0499999999999998,5.0999999999999996,120000,12]
+PASS five-channel independent expected sample
+PASS immediately before delay: zero requested flow
+PASS zero duration steps at delay
+PASS descending ramps interpolate all channels
+PASS constant ignores time and returns all five inputs
+PASS finite opposite-sign endpoints avoid subtraction overflow
+PASS whole-step snapshot created
+PASS k1/k2/k3/k4/final consumer contract: one callback and immutable held copy
+PASS next whole step gets new sample
+PASS invalid time fails before callback without modifying snapshot
+PASS invalid callback output rejected atomically
+PASS null sample arguments rejected
+Whole-step hold is an interface/consumer test; actual RK4 wiring is reserved for S08.
+PASS boundary: passed=18 failed=0

@@ -1,0 +1,23 @@
+﻿(lldb) target create "build/main_debug.exe"
+Current executable set to 'D:\Acode\C\ATR\ATRcore\build\main_debug.exe' (x86_64).
+(lldb) breakpoint set --name main
+Breakpoint 1: where = main_debug.exe`main + 43 at main.c:9:14, address = 0x000000014000144b
+(lldb) run
+Process 29744 launched: 'D:\Acode\C\ATR\ATRcore\build\main_debug.exe' (x86_64)
+Process 29744 stopped
+* thread #1, stop reason = breakpoint 1.1
+    frame #0: 0x00007ff79ff8144b main_debug.exe`main(argc=1, argv=0x000001cccce15530) at main.c:9:14
+   6   	
+   7   	int main(int argc, char **argv)
+   8   	{
+-> 9   	    if (argc == 2 &&
+    	             ^
+   10  	        (strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-h") == 0)) {
+   11  	        puts("Usage: main [--help]\nATRcore " ATRCORE_BUILD_STAGE
+   12  	             ": build skeleton; simulation and CSV output are not implemented.");
+(lldb) frame info
+frame #0: 0x00007ff79ff8144b main_debug.exe`main(argc=1, argv=0x000001cccce15530) at main.c:9:14
+(lldb) continue
+ATRcore S01: C11 build skeleton ready; no simulation performed.
+Process 29744 resuming
+Process 29744 exited with status = 0 (0x00000000)

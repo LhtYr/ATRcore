@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "CodeLLDB: ATRcore main_debug",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/main_debug.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Make: debug",
+            "stopOnEntry": false,
+            "terminal": "integrated",
+            "env": {"PATH": "C:\\msys64\\clang64\\bin;C:\\msys64\\usr\\bin;${env:PATH}"},
+            "linux": {"program": "${workspaceFolder}/build/main_debug"}
+        }
+    ]
+}

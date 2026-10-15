@@ -1,0 +1,2 @@
+﻿clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O0 -g3  -c src/main.c -o build/debug/src/main.o
+clang  build/debug/src/main.o -o build/main_debug.exe -lm

@@ -1,0 +1,2 @@
+﻿Usage: char check | --help
+check: C11/libm build smoke only; component checks follow later.

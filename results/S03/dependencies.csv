@@ -1,0 +1,7 @@
+﻿"Header","Object","BeforeTicks","AfterTicks","Result"
+"include/Logger.h","D:\Acode\C\ATR\ATRcore\build\debug\src\Logger.o","639276665913783525","639276665943895338","PASS"
+"include/Logger.h","D:\Acode\C\ATR\ATRcore\build\debug\tools\check_logger.o","639276665923874166","639276665946280484","PASS"
+"include/Logger.h","D:\Acode\C\ATR\ATRcore\build\src\Logger.o","639276665896698548","639276665938034095","PASS"
+"include/Logger.h","D:\Acode\C\ATR\ATRcore\build\tools\tools\check_logger.o","639276665908358502","639276665941445343","PASS"
+"src/logger_columns.def","D:\Acode\C\ATR\ATRcore\build\debug\src\Logger.o","639276665943895338","639276665954195472","PASS"
+"src/logger_columns.def","D:\Acode\C\ATR\ATRcore\build\src\Logger.o","639276665938034095","639276665950510475","PASS"

@@ -1,0 +1,12 @@
+﻿clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O3 -march=native  -c src/main.c -o build/src/main.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O3 -march=native  -c src/param_file.c -o build/src/param_file.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O3 -march=native  -c src/Logger.c -o build/src/Logger.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O3 -march=native  -c model/solver/BoundaryProfile.c -o build/model/solver/BoundaryProfile.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O3 -march=native  -c model/solver/BoundaryDefaults.c -o build/model/solver/BoundaryDefaults.o
+clang  build/src/main.o build/src/param_file.o build/src/Logger.o build/model/solver/BoundaryProfile.o build/model/solver/BoundaryDefaults.o -o build/main.exe -lm
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O3 -march=native  -c tools/char_main.c -o build/tools/tools/char_main.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O3 -march=native  -c tools/check_contracts.c -o build/tools/tools/check_contracts.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O3 -march=native  -c tools/check_params.c -o build/tools/tools/check_params.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O3 -march=native  -c tools/check_boundary.c -o build/tools/tools/check_boundary.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O3 -march=native  -c tools/check_logger.c -o build/tools/tools/check_logger.o
+clang  build/tools/tools/char_main.o build/tools/tools/check_contracts.o build/tools/tools/check_params.o build/tools/tools/check_boundary.o build/tools/tools/check_logger.o build/src/param_file.o build/src/Logger.o build/model/solver/BoundaryProfile.o build/model/solver/BoundaryDefaults.o -o build/char.exe -lm

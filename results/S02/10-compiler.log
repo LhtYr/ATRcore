@@ -1,0 +1,4 @@
+﻿clang version 22.1.7 (https://github.com/msys2/MINGW-packages b8f306ad57e0c8f3f15aed0dc809d7e3e8e2eee9)
+Target: x86_64-w64-windows-gnu
+Thread model: posix
+InstalledDir: C:/msys64/clang64/bin

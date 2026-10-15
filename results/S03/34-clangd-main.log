@@ -1,0 +1,23 @@
+﻿I[21:10:03.922] clangd version 22.1.7 (https://github.com/msys2/MINGW-packages b8f306ad57e0c8f3f15aed0dc809d7e3e8e2eee9)
+I[21:10:03.923] Features: windows
+I[21:10:03.923] PID: 46952
+I[21:10:03.923] Working directory: D:/Acode/C/ATR/ATRcore
+I[21:10:03.923] argv[0]: C:/msys64/clang64/bin/clangd.exe
+I[21:10:03.923] argv[1]: --check=src/main.c
+I[21:10:03.925] Entering check mode (no LSP server)
+I[21:10:03.925] Testing on source file D:/Acode/C/ATR/ATRcore/src/main.c
+I[21:10:03.926] Loading config file at D:/Acode/C/ATR/ATRcore/.clangd
+I[21:10:03.926] Loading compilation database...
+I[21:10:03.927] Loaded compilation database from D:/Acode/C/ATR/ATRcore/./compile_flags.txt
+I[21:10:03.927] Compile command from CDB is: [D:/Acode/C/ATR/ATRcore/.] C:/msys64/clang64/bin/clang-tool -std=c11 -Wall -Wextra -Wshadow -Iinclude -std=c11 -Wall -Wextra -Wshadow -Iinclude -resource-dir=C:/msys64/clang64/lib/clang/22 -- D:/Acode/C/ATR/ATRcore/src/main.c
+I[21:10:03.928] Parsing command...
+I[21:10:03.929] internal (cc1) args are: -cc1 -triple x86_64-w64-windows-gnu -fsyntax-only -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name main.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -fno-sized-deallocation -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=D:/Acode/C/ATR/ATRcore/. -fcoverage-compilation-dir=D:/Acode/C/ATR/ATRcore/. -resource-dir C:/msys64/clang64/lib/clang/22 -I include -I include -internal-isystem C:/msys64/clang64/lib/clang/22/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -Wall -Wextra -Wshadow -Wall -Wextra -Wshadow -std=c11 -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -exception-model=seh -no-round-trip-args -faddrsig -x c D:/Acode/C/ATR/ATRcore/src/main.c
+I[21:10:03.929] Building preamble...
+I[21:10:03.952] Built preamble of size 655440 for file D:/Acode/C/ATR/ATRcore/src/main.c version null in 0.02 seconds
+I[21:10:03.952] Indexing headers...
+I[21:10:03.996] Building AST...
+I[21:10:04.013] Indexing AST...
+I[21:10:04.014] Building inlay hints
+I[21:10:04.014] Building semantic highlighting
+I[21:10:04.015] Testing features at each token (may be slow in large files)
+I[21:10:04.143] All checks completed, 0 errors

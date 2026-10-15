@@ -1,0 +1,23 @@
+﻿I[17:48:11.155] clangd version 22.1.7 (https://github.com/msys2/MINGW-packages b8f306ad57e0c8f3f15aed0dc809d7e3e8e2eee9)
+I[17:48:11.155] Features: windows
+I[17:48:11.155] PID: 35304
+I[17:48:11.155] Working directory: D:/Acode/C/ATR/ATRcore
+I[17:48:11.155] argv[0]: C:/msys64/clang64/bin/clangd.exe
+I[17:48:11.155] argv[1]: --check=tools/char_main.c
+I[17:48:11.158] Entering check mode (no LSP server)
+I[17:48:11.158] Testing on source file D:/Acode/C/ATR/ATRcore/tools/char_main.c
+I[17:48:11.158] Loading config file at D:/Acode/C/ATR/ATRcore/.clangd
+I[17:48:11.158] Loading compilation database...
+I[17:48:11.159] Loaded compilation database from D:/Acode/C/ATR/ATRcore/./compile_flags.txt
+I[17:48:11.159] Compile command from CDB is: [D:/Acode/C/ATR/ATRcore/.] C:/msys64/clang64/bin/clang-tool -std=c11 -Wall -Wextra -Wshadow -Iinclude -std=c11 -Wall -Wextra -Wshadow -Iinclude -resource-dir=C:/msys64/clang64/lib/clang/22 -- D:/Acode/C/ATR/ATRcore/tools/char_main.c
+I[17:48:11.160] Parsing command...
+I[17:48:11.160] internal (cc1) args are: -cc1 -triple x86_64-w64-windows-gnu -fsyntax-only -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name char_main.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -fno-sized-deallocation -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=D:/Acode/C/ATR/ATRcore/. -fcoverage-compilation-dir=D:/Acode/C/ATR/ATRcore/. -resource-dir C:/msys64/clang64/lib/clang/22 -I include -I include -internal-isystem C:/msys64/clang64/lib/clang/22/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -Wall -Wextra -Wshadow -Wall -Wextra -Wshadow -std=c11 -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -exception-model=seh -no-round-trip-args -faddrsig -x c D:/Acode/C/ATR/ATRcore/tools/char_main.c
+I[17:48:11.161] Building preamble...
+I[17:48:11.184] Built preamble of size 728204 for file D:/Acode/C/ATR/ATRcore/tools/char_main.c version null in 0.02 seconds
+I[17:48:11.184] Indexing headers...
+I[17:48:11.197] Building AST...
+I[17:48:11.204] Indexing AST...
+I[17:48:11.204] Building inlay hints
+I[17:48:11.204] Building semantic highlighting
+I[17:48:11.204] Testing features at each token (may be slow in large files)
+I[17:48:11.242] All checks completed, 0 errors

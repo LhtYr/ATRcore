@@ -1,0 +1,9 @@
+﻿./build/main.exe 
+ATRcore S01: C11 build skeleton ready; no simulation performed.
+/usr/bin/make plot
+make[1]: Entering directory '/d/Acode/C/ATR/ATRcore'
+"python" plotting/plot.py 
+S01: CSV not found: D:\Acode\C\ATR\ATRcore\results\simulation.csv; no model CSV is generated yet.
+make[1]: *** [Makefile:75: plot] Error 2
+make[1]: Leaving directory '/d/Acode/C/ATR/ATRcore'
+make: *** [Makefile:79: run-plot] Error 2

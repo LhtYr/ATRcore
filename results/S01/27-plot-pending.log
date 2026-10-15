@@ -1,0 +1,3 @@
+﻿"python" plotting/plot.py 
+S01: CSV not found: D:\Acode\C\ATR\ATRcore\results\simulation.csv; no model CSV is generated yet.
+make: *** [Makefile:75: plot] Error 2

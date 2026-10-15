@@ -1,0 +1,10 @@
+﻿"python" plotting/plot.py --help
+usage: plot.py [-h] [--csv CSV] [--outdir OUTDIR] [--dpi DPI]
+
+ATRcore system plots (S01 entry only)
+
+options:
+  -h, --help       show this help message and exit
+  --csv CSV
+  --outdir OUTDIR
+  --dpi DPI

@@ -1,0 +1,11 @@
+﻿PASS exact 4/4/5 dimensions; all 13 fields compile-time double
+PASS contract field order
+PASS default inputs: Pa, kg/s LOX, kg/s fuel, Pa, N m
+PASS initial units: rad, rad/s, Pa, Pa; no conversion or projection
+PASS reference software J_sum/b_sum
+PASS zero initialized evaluation is not success
+PASS 50-node diagnostics; 3 local iteration values
+PASS Cp source and turbine Cp remain separate data
+Units are explicit header/config contracts, not runtime dimensional types.
+No physical evaluator, torque calculation or RK4 integration tested in S02.
+PASS contracts: passed=8 failed=0

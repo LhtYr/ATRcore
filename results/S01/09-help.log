@@ -1,0 +1,10 @@
+﻿ATRcore S01 (build framework only)
+  all       Build release main and C check entry
+  debug     Build build/main_debug.exe with -O0 -g3
+  run       Run skeleton; ARGS='--help' is supported
+  char      Build build/char.exe
+  check     Run C11/libm build smoke check (no model checks yet)
+  plot      Python postprocessing entry (pending model CSV stages)
+  run-plot  Run, then plot, sequentially
+  clean     Remove build only; keep results and reports
+  help      Show this help

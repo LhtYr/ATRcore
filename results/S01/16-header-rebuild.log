@@ -1,0 +1,7 @@
+﻿clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O3 -march=native  -c src/main.c -o build/src/main.o
+clang  build/src/main.o -o build/main.exe -lm
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O3 -march=native  -c tools/char_main.c -o build/tools/tools/char_main.o
+clang  build/tools/tools/char_main.o -o build/char.exe -lm
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O0 -g3  -c src/main.c -o build/debug/src/main.o
+clang  build/debug/src/main.o -o build/main_debug.exe -lm
+make: Nothing to be done for 'char'.
