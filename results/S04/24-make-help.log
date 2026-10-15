@@ -1,0 +1,10 @@
+﻿ATRcore S04 (Gas accounting, property adapter and numeric support)
+  all       Build release main and C check entry
+  debug     Build main_debug and char_debug with -O0 -g3
+  run       Inspect boundary; ARGS='--help' lists CLI options
+  char      Build build/char.exe
+  check     Run C checks including Gas, sigmoid, CSV and I/O failures
+  plot      Python postprocessing entry (pending model CSV stages)
+  run-plot  Run, then plot, sequentially
+  clean     Remove build only; keep results and reports
+  help      Show this help

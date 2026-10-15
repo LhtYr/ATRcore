@@ -1,0 +1,249 @@
+﻿PASS S04 build smoke: C standard=201112; exp(0)=1; expected=1; error=0
+PASS exact 4/4/5 dimensions; all 13 fields compile-time double
+PASS contract field order
+PASS default inputs: Pa, kg/s LOX, kg/s fuel, Pa, N m
+PASS initial units: rad, rad/s, Pa, Pa; no conversion or projection
+PASS reference software J_sum/b_sum
+PASS zero initialized evaluation is not success
+PASS 50-node diagnostics; 3 local iteration values
+PASS Cp source and turbine Cp remain separate data
+Units are explicit header/config contracts, not runtime dimensional types.
+No physical evaluator, torque calculation or RK4 integration tested in S02.
+PASS contracts: passed=8 failed=0
+PASS five file inputs load in declared SI units
+PASS all state/shaft bindings, whitespace/CRLF/comments; low positive pressures not clamped
+PASS signed load is retained; EOF without newline
+  rejection line=0 message=missing required key: input.p_chamber
+PASS input.p_chamber = 3600000
+
+  rejection line=0 message=missing required key: input.W_ox
+PASS input.W_ox = 2.05
+
+  rejection line=0 message=missing required key: input.Wg
+PASS input.Wg = 5.1
+
+  rejection line=0 message=missing required key: input.p_out
+PASS input.p_out = 100000
+
+  rejection line=0 message=missing required key: input.T_load
+PASS input.T_load = 12
+
+  rejection line=1 message=invalid finite number: input.p_chamber
+PASS input.p_chamber=nan
+
+  rejection line=1 message=invalid finite number: input.Wg
+PASS input.Wg=inf
+
+  rejection line=1 message=invalid finite number: input.W_ox
+PASS input.W_ox=1e9999
+
+  rejection line=1 message=invalid finite number: input.Wg
+PASS input.Wg=1e-9999
+
+  rejection line=1 message=invalid finite number: input.Wg
+PASS input.Wg=1junk
+
+  rejection line=1 message=invalid finite number: input.Wg
+PASS input.Wg=
+
+  rejection line=1 message=expected key=value
+PASS input.Wg 5
+
+  rejection line=1 message=unsupported key: unknown
+PASS unknown=1
+
+  rejection line=6 message=duplicate key: input.Wg
+PASS duplicate file keys rejected atomically
+  rejection line=0 message=missing required key: boundary.delay_s
+PASS ramp requires explicit times and five starts
+  rejection line=0 message=cannot open configuration: build/no-such-s02-directory/input.cfg
+PASS missing file rejected atomically
+  rejection line=1 message=line too long
+PASS oversize line rejected
+  rejection line=1 message=NUL byte in file
+PASS embedded NUL rejected
+PASS defaults < file < CLI regardless of argument order; last CLI set wins
+PASS requested flows retained; positive resisting load retained
+PASS input.p_chamber=0
+PASS input.p_out=-1
+PASS initial.p_plenum=0
+PASS initial.p_downstream=-2
+PASS initial.theta_mech=nan
+PASS initial.omega_mech=inf
+PASS shaft.J_sum=0
+PASS shaft.b_sum=-1
+PASS boundary.delay_s=-1
+PASS boundary.duration_s=-1
+PASS boundary.ramp_enabled=0.5
+PASS boundary.ramp_enabled=2
+PASS input.Wg=nan
+PASS p23_total=1
+PASS T23_total=1
+PASS W23=1
+PASS motor.Rs=1
+PASS pump.rho=1
+PASS shaft.J_motor=1
+PASS shaft.J_pump=1
+PASS inverter.f_sw=1
+PASS control_dt=1
+PASS control_mode=1
+PASS enable_controller=1
+PASS enable_inverter=1
+PASS malformed CLI rejected
+PASS CLI cannot mask incomplete file
+  rejection line=0 message=inputs require finite values and positive pressures
+PASS file semantic validation is transactional
+  rejection line=0 message=missing required key: boundary.delay_s
+PASS boundary.delay_s=1
+
+  rejection line=0 message=missing required key: boundary.duration_s
+PASS boundary.duration_s=2
+
+  rejection line=0 message=missing required key: boundary.start.p_chamber
+PASS boundary.start.p_chamber=2900000
+
+  rejection line=0 message=missing required key: boundary.start.W_ox
+PASS boundary.start.W_ox=1.6
+
+  rejection line=0 message=missing required key: boundary.start.Wg
+PASS boundary.start.Wg=4.1
+
+  rejection line=0 message=missing required key: boundary.start.p_out
+PASS boundary.start.p_out=100000
+
+  rejection line=0 message=missing required key: boundary.start.T_load
+PASS boundary.start.T_load=4
+
+PASS all ramp bindings via CLI without file
+PASS temporary C fixture removed
+PASS params: passed=60 failed=0
+PASS ramp sample file loads
+  t=0 input=[2900000,0,0,100000,4]
+PASS five-channel independent expected sample
+  t=0.5 input=[2900000,0,0,100000,4]
+PASS five-channel independent expected sample
+  t=1 input=[2900000,1.6000000000000001,4.0999999999999996,100000,4]
+PASS five-channel independent expected sample
+  t=2 input=[3250000,1.825,4.5999999999999996,110000,8]
+PASS five-channel independent expected sample
+  t=3 input=[3600000,2.0499999999999998,5.0999999999999996,120000,12]
+PASS five-channel independent expected sample
+  t=5 input=[3600000,2.0499999999999998,5.0999999999999996,120000,12]
+PASS five-channel independent expected sample
+  max_abs_error [Pa,kg/s,kg/s,Pa,N m]=[0,0,0,0,0]
+PASS immediately before delay: zero requested flow
+PASS zero duration steps at delay
+PASS direct invalid ramp duration fails instead of silently becoming a step
+PASS descending ramps interpolate all channels
+PASS constant ignores time and returns all five inputs
+PASS finite opposite-sign endpoints avoid subtraction overflow
+PASS whole-step snapshot created
+PASS k1/k2/k3/k4/final consumer contract: one callback and immutable held copy
+PASS next whole step gets new sample
+PASS invalid time fails before callback without modifying snapshot
+PASS invalid callback output rejected atomically
+PASS null sample arguments rejected
+Whole-step hold is an interface/consumer test; actual RK4 wiring is reserved for S08.
+PASS boundary: passed=19 failed=0
+PASS 80 unique columns: independent names/order/units contract
+PASS open requested CSV (parent must already exist)
+PASS write known initial snapshot with h=0
+PASS logging leaves inputs/state/eval/diagnostics byte-identical
+PASS step-end t+h and stage diagnostics serialize without mutation
+PASS two rows explicitly flushed and closed successfully
+PASS C readback: exact header/row width and 160 independent numeric expectations
+  CSV=results/logger_fixture.csv rows=2 columns=80 values_read=160 max_abs_error=0
+  fixture only: t=2 -> t+h=2.125; raw p=[-123,19999.999], protected=[20000,20001];
+  k4 limit_hit=1 / converged=0 / count=80; final converged=1; eval_status=4 retained.
+  These are synthetic serialization values, not an engine simulation or solver test.
+PASS row before header rejected
+PASS duplicate header rejected without additional bytes
+PASS reinitialization of active logger rejected; original sink released
+PASS repeated close does not double-close
+PASS write after close rejected
+PASS injected header write failure reported
+PASS I/O error remains sticky; retries suppressed; resource closes
+PASS injected data write failure not counted as successful row
+PASS injected explicit flush failure returned and closed
+PASS buffered failure during final flush returned; close still executed
+PASS injected close failure returned
+PASS real fopen failure: no platform mkdir fallback
+PASS null/invalid lifecycle arguments reported
+PASS null snapshot rejected before write
+PASS missing observation pointer rejected
+PASS boundary time cannot be mistaken for final time
+PASS negative step duration rejected
+PASS nonfinite time rejected
+PASS overflowing final time rejected
+PASS positive h lost to time rounding rejected
+PASS NaN value rejected without partial row
+PASS infinite observation rejected without partial row
+PASS disabled iteration cannot claim convergence
+PASS limit hit and convergence cannot both be true
+PASS nonboolean iteration flag rejected
+PASS negative iteration count rejected
+PASS negative increment magnitude rejected
+PASS 17-digit formatter round-trips finite extremes, adjacent double and signed zero
+PASS logger: passed=35 failed=0
+PASS Gas zero status is not success
+PASS property adapter rejects null
+PASS fixed property adapter succeeds
+PASS screenshot Cp = 2860 J/(kg K)
+PASS turbine gamma/R = 1.18/380
+PASS turbine Cp independently equals 22420/9
+PASS two Cp values remain distinct (difference 3320/9)
+PASS explicit turbine calibration source
+PASS Gas accepts mathematical midpoint flow fixture
+PASS source flows summed once without unit conversion
+PASS total temperature preserved; static accounting 0.81 times total
+PASS total/static pressure accounting is direct Pa pass-through
+PASS Gas carries both property contracts
+PASS repeated evaluation does not accumulate fuel
+PASS explicit zero flow allowed for isolated blowdown
+PASS Gas applies no requested-flow or turbine temperature/pressure floor
+PASS one source alone is counted once
+PASS Gas rejects null output
+PASS invalid slot=0 case=0 rejected; output unchanged
+PASS invalid slot=0 case=1 rejected; output unchanged
+PASS invalid slot=0 case=2 rejected; output unchanged
+PASS invalid slot=0 case=3 rejected; output unchanged
+PASS invalid slot=1 case=0 rejected; output unchanged
+PASS invalid slot=1 case=1 rejected; output unchanged
+PASS invalid slot=1 case=2 rejected; output unchanged
+PASS invalid slot=1 case=3 rejected; output unchanged
+PASS invalid slot=2 case=0 rejected; output unchanged
+PASS invalid slot=2 case=1 rejected; output unchanged
+PASS invalid slot=2 case=2 rejected; output unchanged
+PASS invalid slot=2 case=3 rejected; output unchanged
+PASS invalid slot=3 case=0 rejected; output unchanged
+PASS invalid slot=3 case=1 rejected; output unchanged
+PASS invalid slot=3 case=2 rejected; output unchanged
+PASS invalid slot=3 case=3 rejected; output unchanged
+PASS zero pressure rejected atomically
+PASS zero total temperature rejected atomically
+PASS overflowing mass sum rejected atomically
+Gas evidence: Cp_source=2860 Cp_turbine=2491.1111111111118 delta_Cp=368.88888888888823
+PASS gas: passed=37 failed=0
+PASS sigmoid(0) = 0.5
+PASS sigmoid(-0) = 0.5
+PASS sigmoid rejects null output
+PASS sigmoid rejects nonfinite input without changing output
+PASS sigmoid rejects nonfinite input without changing output
+PASS sigmoid rejects nonfinite input without changing output
+PASS sigmoid(-DBL_MAX) finite saturation = 0
+PASS sigmoid(DBL_MAX) finite saturation = 1
+PASS open numeric evidence CSV
+PASS write numeric evidence header
+PASS normal [-4,4] finite/range, monotonicity, independent accuracy and CSV
+normal [-4,4] rows=8001 max_sigmoid_legacy_abs=2.2204460492503131e-16 max_oracle_abs=1.1102230246251565e-16 max_exp_rel=8.8817841970012523e-16
+PASS uncompressed [-500,500] finite/range, monotonicity, independent accuracy and CSV
+uncompressed [-500,500] rows=2001 max_sigmoid_legacy_abs=1.1102230246251565e-16 max_oracle_abs=1.1102230246251565e-16 max_exp_rel=8.8817841970012523e-16
+PASS polynomial edges finite/range, monotonicity, independent accuracy and CSV
+polynomial edges rows=123 max_sigmoid_legacy_abs=2.2204460492503131e-16 max_oracle_abs=1.1102230246251565e-16 max_exp_rel=8.8817841970012523e-16
+PASS extremes (legacy difference informational) finite/range, monotonicity, independent accuracy and CSV
+extremes (legacy difference informational) rows=12 max_sigmoid_legacy_abs=1.0064294952495521e-233 max_oracle_abs=4.9406564584124654e-324 max_exp_rel=0
+PASS legacy soft-limit difference independently identified at z=-600
+soft-limit evidence z=-600: new=2.6503965530043108e-261 legacy=7.9395079544194538e-247 legacy/new=299559246914193.38 compressed_abs_z=566.66666666666663
+PASS sigmoid complement symmetry at 101 pairs
+PASS close numeric evidence CSV
+PASS numeric: passed=17 failed=0

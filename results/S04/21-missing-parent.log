@@ -1,0 +1,10 @@
+﻿PASS sigmoid(0) = 0.5
+PASS sigmoid(-0) = 0.5
+PASS sigmoid rejects null output
+PASS sigmoid rejects nonfinite input without changing output
+PASS sigmoid rejects nonfinite input without changing output
+PASS sigmoid rejects nonfinite input without changing output
+PASS sigmoid(-DBL_MAX) finite saturation = 0
+PASS sigmoid(DBL_MAX) finite saturation = 1
+FAIL open numeric evidence CSV
+FAIL numeric: passed=8 failed=1

@@ -1,0 +1,16 @@
+﻿clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O0 -g3  -c src/main.c -o build/debug/src/main.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O0 -g3  -c src/param_file.c -o build/debug/src/param_file.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O0 -g3  -c src/Logger.c -o build/debug/src/Logger.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O0 -g3  -c model/component/Gas.c -o build/debug/model/component/Gas.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O0 -g3  -c model/solver/BoundaryProfile.c -o build/debug/model/solver/BoundaryProfile.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O0 -g3  -c model/solver/BoundaryDefaults.c -o build/debug/model/solver/BoundaryDefaults.o
+clang  build/debug/src/main.o build/debug/src/param_file.o build/debug/src/Logger.o build/debug/model/component/Gas.o build/debug/model/solver/BoundaryProfile.o build/debug/model/solver/BoundaryDefaults.o -o build/main_debug.exe -lm
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O0 -g3  -c tools/char_main.c -o build/debug/tools/char_main.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O0 -g3  -c tools/check_contracts.c -o build/debug/tools/check_contracts.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O0 -g3  -c tools/check_params.c -o build/debug/tools/check_params.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O0 -g3  -c tools/check_boundary.c -o build/debug/tools/check_boundary.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O0 -g3  -c tools/check_logger.c -o build/debug/tools/check_logger.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O0 -g3  -c tools/check_gas.c -o build/debug/tools/check_gas.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O0 -g3  -c tools/check_numeric.c -o build/debug/tools/check_numeric.o
+clang -Iinclude -std=c11 -Wall -Wextra -Wshadow -MMD -MP -O0 -g3  -c tools/reference_exp.c -o build/debug/tools/reference_exp.o
+clang  build/debug/tools/char_main.o build/debug/tools/check_contracts.o build/debug/tools/check_params.o build/debug/tools/check_boundary.o build/debug/tools/check_logger.o build/debug/tools/check_gas.o build/debug/tools/check_numeric.o build/debug/tools/reference_exp.o build/debug/src/param_file.o build/debug/src/Logger.o build/debug/model/component/Gas.o build/debug/model/solver/BoundaryProfile.o build/debug/model/solver/BoundaryDefaults.o -o build/char_debug.exe -lm

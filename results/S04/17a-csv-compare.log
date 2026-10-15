@@ -1,0 +1,6 @@
+﻿PASS open both numeric CSV files
+PASS same header, regions, exact z grid, 10137 rows, complete parse
+PASS release/debug values satisfy absolute and small-tail relative tolerances
+PASS close both numeric CSV files
+CSV comparison: rows=10137 max_sigmoid_abs=0 max_legacy_abs=0 max_delta_abs=0 max_tail_rel=0
+PASS numeric-compare: passed=4 failed=0

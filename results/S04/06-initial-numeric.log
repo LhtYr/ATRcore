@@ -1,0 +1,23 @@
+PASS sigmoid(0) = 0.5
+PASS sigmoid(-0) = 0.5
+PASS sigmoid rejects null output
+PASS sigmoid rejects nonfinite input without changing output
+PASS sigmoid rejects nonfinite input without changing output
+PASS sigmoid rejects nonfinite input without changing output
+PASS sigmoid(-DBL_MAX) finite saturation = 0
+PASS sigmoid(DBL_MAX) finite saturation = 1
+PASS open numeric evidence CSV
+PASS write numeric evidence header
+PASS normal [-4,4] finite/range, monotonicity, independent accuracy and CSV
+normal [-4,4] rows=8001 max_sigmoid_legacy_abs=2.2204460492503131e-16 max_oracle_abs=1.1102230246251565e-16 max_exp_rel=1.1102230246251565e-15
+PASS uncompressed [-500,500] finite/range, monotonicity, independent accuracy and CSV
+uncompressed [-500,500] rows=2001 max_sigmoid_legacy_abs=1.1102230246251565e-16 max_oracle_abs=1.1102230246251565e-16 max_exp_rel=8.8817841970012523e-16
+PASS polynomial edges finite/range, monotonicity, independent accuracy and CSV
+polynomial edges rows=123 max_sigmoid_legacy_abs=2.2204460492503131e-16 max_oracle_abs=1.1102230246251565e-16 max_exp_rel=8.8817841970012523e-16
+PASS extremes (legacy difference informational) finite/range, monotonicity, independent accuracy and CSV
+extremes (legacy difference informational) rows=12 max_sigmoid_legacy_abs=0 max_oracle_abs=4.9406564584124654e-324 max_exp_rel=0
+PASS legacy soft-limit difference independently identified at z=-600
+soft-limit evidence z=-600: new=2.6503965530043108e-261 legacy=7.9395079544194538e-247 legacy/new=299559246914193.38 compressed_abs_z=566.66666666666663
+PASS sigmoid complement symmetry at 101 pairs
+PASS close numeric evidence CSV
+PASS numeric: passed=17 failed=0

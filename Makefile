@@ -94,12 +94,12 @@ clean:
 endif
 
 help:
-	@echo "ATRcore S03 (contracts, boundaries and CSV logger)"
+	@echo "ATRcore S04 (Gas accounting, property adapter and numeric support)"
 	@echo "  all       Build release main and C check entry"
 	@echo "  debug     Build main_debug and char_debug with -O0 -g3"
 	@echo "  run       Inspect boundary; ARGS='--help' lists CLI options"
 	@echo "  char      Build build/char$(EXEEXT)"
-	@echo "  check     Run C checks including CSV write/readback and I/O failures"
+	@echo "  check     Run C checks including Gas, sigmoid, CSV and I/O failures"
 	@echo "  plot      Python postprocessing entry (pending model CSV stages)"
 	@echo "  run-plot  Run, then plot, sequentially"
 	@echo "  clean     Remove build only; keep results and reports"

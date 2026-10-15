@@ -1,0 +1,39 @@
+PASS Gas zero status is not success
+PASS property adapter rejects null
+PASS fixed property adapter succeeds
+PASS screenshot Cp = 2860 J/(kg K)
+PASS turbine gamma/R = 1.18/380
+PASS turbine Cp independently equals 22420/9
+PASS two Cp values remain distinct (difference 3320/9)
+PASS explicit turbine calibration source
+PASS Gas accepts mathematical midpoint flow fixture
+PASS source flows summed once without unit conversion
+PASS total temperature preserved; static accounting 0.81 times total
+PASS total/static pressure accounting is direct Pa pass-through
+PASS Gas carries both property contracts
+PASS repeated evaluation does not accumulate fuel
+PASS explicit zero flow allowed for isolated blowdown
+PASS Gas applies no requested-flow or turbine temperature/pressure floor
+PASS one source alone is counted once
+PASS Gas rejects null output
+PASS invalid slot=0 case=0 rejected; output unchanged
+PASS invalid slot=0 case=1 rejected; output unchanged
+PASS invalid slot=0 case=2 rejected; output unchanged
+PASS invalid slot=0 case=3 rejected; output unchanged
+PASS invalid slot=1 case=0 rejected; output unchanged
+PASS invalid slot=1 case=1 rejected; output unchanged
+PASS invalid slot=1 case=2 rejected; output unchanged
+PASS invalid slot=1 case=3 rejected; output unchanged
+PASS invalid slot=2 case=0 rejected; output unchanged
+PASS invalid slot=2 case=1 rejected; output unchanged
+PASS invalid slot=2 case=2 rejected; output unchanged
+PASS invalid slot=2 case=3 rejected; output unchanged
+PASS invalid slot=3 case=0 rejected; output unchanged
+PASS invalid slot=3 case=1 rejected; output unchanged
+PASS invalid slot=3 case=2 rejected; output unchanged
+PASS invalid slot=3 case=3 rejected; output unchanged
+PASS zero pressure rejected atomically
+PASS zero total temperature rejected atomically
+PASS overflowing mass sum rejected atomically
+Gas evidence: Cp_source=2860 Cp_turbine=2491.1111111111118 delta_Cp=368.88888888888823
+PASS gas: passed=37 failed=0

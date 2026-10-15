@@ -1,0 +1,28 @@
+clang --version -> exit=0 expected=0
+make clean -> exit=0 expected=0
+make all -> exit=0 expected=0
+make debug -> exit=0 expected=0
+./build/char.exe gas-check -> exit=0 expected=0
+./build/char_debug.exe gas-check -> exit=0 expected=0
+./build/char.exe numeric-check results/S04/numeric.csv -> exit=0 expected=0
+./build/char_debug.exe numeric-check results/S04/numeric_debug.csv -> exit=0 expected=0
+./build/char.exe numeric-compare results/S04/numeric.csv results/S04/numeric_debug.csv -> exit=0 expected=0
+make check -> exit=0 expected=0
+./build/char_debug.exe check -> exit=0 expected=0
+make run -> exit=0 expected=0
+./build/char.exe numeric-check build/no-such-s04-directory/output.csv -> exit=1 expected=1
+./build/char.exe gas-check unexpected -> exit=1 expected=1
+./build/char.exe --help -> exit=0 expected=0
+make help -> exit=0 expected=0
+make -q all debug -> exit=0 expected=0
+make all debug -> exit=0 expected=0
+make all debug -> exit=0 expected=0
+make -q all debug -> exit=0 expected=0
+make clean -> exit=0 expected=0
+make all debug 'EXTRA_CFLAGS=-pedantic-errors -Werror' -> exit=0 expected=0
+make check -> exit=0 expected=0
+./build/char_debug.exe check -> exit=0 expected=0
+make clean -> exit=0 expected=0
+make all debug -> exit=0 expected=0
+make -q all debug -> exit=0 expected=0
+PASS S04: 27 commands; Gas header 22/22 and numeric header 4/4 rebuilds; release/debug CSV C comparison passed.
