@@ -1,0 +1,1 @@
+﻿PASS 250/250 coefficients: literals, signs, order, columns and image line mapping; SHA256=D92E8B4A1881A50F094507EDC1A861F3D76D8311194247B84009BFB02DE4E86A

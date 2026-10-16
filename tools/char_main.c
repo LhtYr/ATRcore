@@ -2,6 +2,7 @@
 #include "check_s02.h"
 #include "check_logger.h"
 #include "check_s04.h"
+#include "char_gas_generator.h"
 
 #include <math.h>
 #include <stdio.h>
@@ -26,6 +27,8 @@ int main(int argc, char **argv)
     if (argc == 2 &&
         (strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-h") == 0)) {
         puts("Usage: char check | contracts-check | params-check | boundary-check | logger-check [CSV] | gas-check | numeric-check [CSV] | numeric-compare CSV CSV | --help\n"
+             "       char gg-check [COEFFICIENT_CSV REPORT_CSV] | gg-point P_PA W_OX WG CSV | gg-scan CSV\n"
+             "       char gg-compare CSV CSV\n"
              "C checks for contracts, configuration, boundaries and CSV.\n"
              "logger-check default: results/logger_fixture.csv (synthetic snapshots, not simulation).");
         return EXIT_SUCCESS;
@@ -38,12 +41,19 @@ int main(int argc, char **argv)
         failed |= check_logger("results/logger_fixture.csv");
         failed |= check_gas();
         failed |= check_numeric("results/numeric_fixture.csv");
+        failed |= check_gas_generator("tools/fixtures/gg_appendix_a.csv", "results/gg_check.csv");
         return failed ? EXIT_FAILURE : EXIT_SUCCESS;
     }
     if (argc == 2 && !strcmp(argv[1], "contracts-check")) return check_contracts();
     if (argc == 2 && !strcmp(argv[1], "params-check")) return check_params();
     if (argc == 2 && !strcmp(argv[1], "boundary-check")) return check_boundary();
     if (argc == 2 && !strcmp(argv[1], "gas-check")) return check_gas();
+    if (argc == 4 && !strcmp(argv[1], "gg-compare")) return compare_gas_generator_csv(argv[2], argv[3]);
+    if ((argc == 2 || argc == 4) && !strcmp(argv[1], "gg-check"))
+        return check_gas_generator(argc == 4 ? argv[2] : "tools/fixtures/gg_appendix_a.csv",
+                                  argc == 4 ? argv[3] : "results/gg_check.csv");
+    if (argc >= 2 && (!strcmp(argv[1], "gg-point") || !strcmp(argv[1], "gg-scan")))
+        return char_gas_generator(argc, argv);
     if (argc == 4 && !strcmp(argv[1], "numeric-compare"))
         return check_numeric_csv_pair(argv[2], argv[3]);
     if ((argc == 2 || argc == 3) && !strcmp(argv[1], "numeric-check"))

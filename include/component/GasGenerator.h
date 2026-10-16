@@ -15,7 +15,23 @@ enum GasGeneratorFlags {
     SOURCE_CP_DIFFERS_FROM_TURBINE_CP = 1u << 4
 };
 
-/* Algebraic observations only. No ELM computation or coefficients in S02. */
+/* Fixed model data: the coefficient pointers refer to immutable Appendix A
+ * arrays. This version accepts only the frozen scalar/model contract; it has
+ * no runtime coefficient/scalar override or training interface. */
+typedef struct GasGeneratorParams {
+    int hidden_count;
+    const double (*input_weight)[3]; /* columns: normalized LOX, fuel, pressure */
+    const double *hidden_bias, *output_weight;
+    double ox_min, ox_max, fuel_min, fuel_max;
+    double pressure_min_mpa, pressure_max_mpa, pressure_scale_pa;
+    double temperature_min, temperature_max;
+    double fuel_floor, ox_floor;
+    double cp_source, temperature_scale, static_temperature_ratio;
+    double legacy_fuel_calibration; /* metadata ONLY, not a fuel ceiling */
+    GasPropertySource property_mode;
+} GasGeneratorParams;
+
+/* Pure algebraic observations; failed evaluations must never drive a solver. */
 typedef struct GasGeneratorEval {
     double p_chamber;                            /* Pa */
     double W_ox_requested, Wg_requested;           /* kg/s */
@@ -29,4 +45,17 @@ typedef struct GasGeneratorEval {
     unsigned flags;
     GasGeneratorStatus status;
 } GasGeneratorEval;
+
+/* Keep the complete final snapshot, including hidden-layer diagnostics. */
+typedef GasGeneratorEval GasGeneratorView;
+extern const GasGeneratorParams gas_generator_params;
+extern GasGeneratorView gas_generator_view;
+
+GasGeneratorStatus gas_generator_validate_params(const GasGeneratorParams *params);
+GasGeneratorEval gas_generator_evaluate(const GasGeneratorParams *params,
+                                        double p_chamber, double W_ox, double Wg);
+/* Copy only a completed successful evaluation; never re-evaluate or add flows.
+ * The caller chooses which evaluation is final. Failure leaves view unchanged. */
+GasGeneratorStatus gas_generator_apply_state(GasGeneratorView *view,
+                                             const GasGeneratorEval *eval);
 #endif

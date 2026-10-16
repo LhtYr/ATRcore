@@ -1,0 +1,2 @@
+﻿powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/clean.ps1
+Removing verified build directory: D:\Acode\C\ATR\ATRcore\build

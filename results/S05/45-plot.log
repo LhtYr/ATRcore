@@ -1,0 +1,3 @@
+﻿"../.venv/Scripts/python.exe" plotting/plot_char.py --csv results/S05/gg_scan.csv --outdir results/S05/figures
+saved results\S05\figures\gg_scan_temperature.png
+saved results\S05\figures\gg_scan_fuel_slices.png

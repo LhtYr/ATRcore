@@ -1,0 +1,38 @@
+clang --version -> exit=0 expected=0
+make clean -> exit=0 expected=0
+make all -> exit=0 expected=0
+make debug -> exit=0 expected=0
+./build/char.exe gg-check tools/fixtures/gg_appendix_a.csv results/S05/gg_check.csv -> exit=0 expected=0
+./build/char_debug.exe gg-check tools/fixtures/gg_appendix_a.csv results/S05/gg_check_debug.csv -> exit=0 expected=0
+./build/char.exe gg-compare results/S05/gg_check.csv results/S05/gg_check_debug.csv -> exit=0 expected=0
+./build/char.exe gg-compare results/S05/gg_check.csv.nodes.csv results/S05/gg_check_debug.csv.nodes.csv -> exit=0 expected=0
+make check -> exit=0 expected=0
+./build/char_debug.exe check -> exit=0 expected=0
+./build/char.exe gg-point 3600000 2.05 5.1 results/S05/gg_point.csv -> exit=0 expected=0
+./build/char.exe gg-point 3600000 0 0 results/S05/gg_zero.csv -> exit=0 expected=0
+./build/char.exe gg-point 101325 0.0001 0.0004 results/S05/invalid_init.csv -> exit=1 expected=1
+./build/char.exe gg-point nan 2.05 5.1 results/S05/invalid_nan.csv -> exit=1 expected=1
+./build/char.exe gg-scan results/S05/unused.csv extra -> exit=1 expected=1
+./build/char.exe gg-point 3600000 2.05 5.1 build/no-such-s05-dir/out.csv -> exit=1 expected=1
+./build/char.exe gg-check tools/fixtures/no-such-file.csv results/S05/unused.csv -> exit=1 expected=1
+./build/char.exe gg-check results/S05/tampered_coefficients.csv results/S05/expected_failure.csv -> exit=1 expected=1
+./build/char.exe gg-scan results/S05/gg_scan.csv -> exit=0 expected=0
+./build/char_debug.exe gg-scan results/S05/gg_scan_debug.csv -> exit=0 expected=0
+./build/char.exe gg-compare results/S05/gg_scan.csv results/S05/gg_scan_debug.csv -> exit=0 expected=0
+./build/char.exe --help -> exit=0 expected=0
+make -q all debug -> exit=0 expected=0
+make all debug -> exit=0 expected=0
+make all debug -> exit=0 expected=0
+make -q all debug -> exit=0 expected=0
+make clean -> exit=0 expected=0
+make all debug 'EXTRA_CFLAGS=-pedantic-errors -Werror' -> exit=0 expected=0
+make check -> exit=0 expected=0
+./build/char_debug.exe check -> exit=0 expected=0
+make clean -> exit=0 expected=0
+make all debug -> exit=0 expected=0
+make -q all debug -> exit=0 expected=0
+make run -> exit=0 expected=0
+../.venv/Scripts/python.exe -m pip freeze -> exit=0 expected=0
+make plot PLOT_SCRIPT=plotting/plot_char.py 'PLOT_ARGS=--csv results/S05/gg_scan.csv --outdir results/S05/figures' -> exit=0 expected=0
+../.venv/Scripts/python.exe plotting/plot_char.py --csv results/S05/no-such.csv --outdir results/S05/figures -> exit=1 expected=1
+PASS S05: 37 commands; 250 coefficients; dependencies 24/24 + 2/2; C checks and plots complete; Git unchanged.

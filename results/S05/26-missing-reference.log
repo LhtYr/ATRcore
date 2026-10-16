@@ -1,0 +1,2 @@
+﻿FAIL parse exactly 50 independent Appendix A rows (250 finite coefficients)
+FAIL gas-generator: passed=0 failed=1

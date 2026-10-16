@@ -1,0 +1,5 @@
+﻿Usage: char check | contracts-check | params-check | boundary-check | logger-check [CSV] | gas-check | numeric-check [CSV] | numeric-compare CSV CSV | --help
+       char gg-check [COEFFICIENT_CSV REPORT_CSV] | gg-point P_PA W_OX WG CSV | gg-scan CSV
+       char gg-compare CSV CSV
+C checks for contracts, configuration, boundaries and CSV.
+logger-check default: results/logger_fixture.csv (synthetic snapshots, not simulation).

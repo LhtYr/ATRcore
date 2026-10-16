@@ -61,6 +61,7 @@ $(BIN_CHAR_DEBUG): $(CHAR_DEBUG_OBJS)
 VENV_PYTHON := $(firstword $(wildcard ../.venv/Scripts/python.exe ../.venv/bin/python .venv/Scripts/python.exe .venv/bin/python))
 PYTHON ?= $(if $(VENV_PYTHON),$(VENV_PYTHON),$(shell command -v python >/dev/null 2>&1 && echo python || echo python3))
 PLOT_ARGS ?=
+PLOT_SCRIPT ?= plotting/plot.py
 ARGS ?=
 
 .PHONY: all debug run char check plot run-plot clean help results-dir
@@ -78,7 +79,7 @@ check: $(BIN_CHAR) | results-dir
 	./$(BIN_CHAR) check
 
 plot:
-	"$(PYTHON)" plotting/plot.py $(PLOT_ARGS)
+	"$(PYTHON)" $(PLOT_SCRIPT) $(PLOT_ARGS)
 
 # Recipe recursion guarantees run finishes before plot, even under make -j.
 run-plot: run
@@ -94,13 +95,13 @@ clean:
 endif
 
 help:
-	@echo "ATRcore S04 (Gas accounting, property adapter and numeric support)"
+	@echo "ATRcore S05 (fixed LOX GasGenerator ELM and component checks)"
 	@echo "  all       Build release main and C check entry"
 	@echo "  debug     Build main_debug and char_debug with -O0 -g3"
 	@echo "  run       Inspect boundary; ARGS='--help' lists CLI options"
 	@echo "  char      Build build/char$(EXEEXT)"
-	@echo "  check     Run C checks including Gas, sigmoid, CSV and I/O failures"
-	@echo "  plot      Python postprocessing entry (pending model CSV stages)"
+	@echo "  check     Run C checks including GasGenerator layer-by-layer comparison"
+	@echo "  plot      Use PLOT_SCRIPT=plotting/plot_char.py for component CSV"
 	@echo "  run-plot  Run, then plot, sequentially"
 	@echo "  clean     Remove build only; keep results and reports"
 	@echo "  help      Show this help"

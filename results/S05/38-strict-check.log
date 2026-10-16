@@ -1,0 +1,1361 @@
+﻿./build/char.exe check
+PASS S05 build smoke: C standard=201112; exp(0)=1; expected=1; error=0
+PASS exact 4/4/5 dimensions; all 13 fields compile-time double
+PASS contract field order
+PASS default inputs: Pa, kg/s LOX, kg/s fuel, Pa, N m
+PASS initial units: rad, rad/s, Pa, Pa; no conversion or projection
+PASS reference software J_sum/b_sum
+PASS zero initialized evaluation is not success
+PASS 50-node diagnostics; 3 local iteration values
+PASS Cp source and turbine Cp remain separate data
+Units are explicit header/config contracts, not runtime dimensional types.
+No physical evaluator, torque calculation or RK4 integration tested in S02.
+PASS contracts: passed=8 failed=0
+PASS five file inputs load in declared SI units
+PASS all state/shaft bindings, whitespace/CRLF/comments; low positive pressures not clamped
+PASS signed load is retained; EOF without newline
+  rejection line=0 message=missing required key: input.p_chamber
+PASS input.p_chamber = 3600000
+
+  rejection line=0 message=missing required key: input.W_ox
+PASS input.W_ox = 2.05
+
+  rejection line=0 message=missing required key: input.Wg
+PASS input.Wg = 5.1
+
+  rejection line=0 message=missing required key: input.p_out
+PASS input.p_out = 100000
+
+  rejection line=0 message=missing required key: input.T_load
+PASS input.T_load = 12
+
+  rejection line=1 message=invalid finite number: input.p_chamber
+PASS input.p_chamber=nan
+
+  rejection line=1 message=invalid finite number: input.Wg
+PASS input.Wg=inf
+
+  rejection line=1 message=invalid finite number: input.W_ox
+PASS input.W_ox=1e9999
+
+  rejection line=1 message=invalid finite number: input.Wg
+PASS input.Wg=1e-9999
+
+  rejection line=1 message=invalid finite number: input.Wg
+PASS input.Wg=1junk
+
+  rejection line=1 message=invalid finite number: input.Wg
+PASS input.Wg=
+
+  rejection line=1 message=expected key=value
+PASS input.Wg 5
+
+  rejection line=1 message=unsupported key: unknown
+PASS unknown=1
+
+  rejection line=6 message=duplicate key: input.Wg
+PASS duplicate file keys rejected atomically
+  rejection line=0 message=missing required key: boundary.delay_s
+PASS ramp requires explicit times and five starts
+  rejection line=0 message=cannot open configuration: build/no-such-s02-directory/input.cfg
+PASS missing file rejected atomically
+  rejection line=1 message=line too long
+PASS oversize line rejected
+  rejection line=1 message=NUL byte in file
+PASS embedded NUL rejected
+PASS defaults < file < CLI regardless of argument order; last CLI set wins
+PASS requested flows retained; positive resisting load retained
+PASS input.p_chamber=0
+PASS input.p_out=-1
+PASS initial.p_plenum=0
+PASS initial.p_downstream=-2
+PASS initial.theta_mech=nan
+PASS initial.omega_mech=inf
+PASS shaft.J_sum=0
+PASS shaft.b_sum=-1
+PASS boundary.delay_s=-1
+PASS boundary.duration_s=-1
+PASS boundary.ramp_enabled=0.5
+PASS boundary.ramp_enabled=2
+PASS input.Wg=nan
+PASS p23_total=1
+PASS T23_total=1
+PASS W23=1
+PASS motor.Rs=1
+PASS pump.rho=1
+PASS shaft.J_motor=1
+PASS shaft.J_pump=1
+PASS inverter.f_sw=1
+PASS control_dt=1
+PASS control_mode=1
+PASS enable_controller=1
+PASS enable_inverter=1
+PASS malformed CLI rejected
+PASS CLI cannot mask incomplete file
+  rejection line=0 message=inputs require finite values and positive pressures
+PASS file semantic validation is transactional
+  rejection line=0 message=missing required key: boundary.delay_s
+PASS boundary.delay_s=1
+
+  rejection line=0 message=missing required key: boundary.duration_s
+PASS boundary.duration_s=2
+
+  rejection line=0 message=missing required key: boundary.start.p_chamber
+PASS boundary.start.p_chamber=2900000
+
+  rejection line=0 message=missing required key: boundary.start.W_ox
+PASS boundary.start.W_ox=1.6
+
+  rejection line=0 message=missing required key: boundary.start.Wg
+PASS boundary.start.Wg=4.1
+
+  rejection line=0 message=missing required key: boundary.start.p_out
+PASS boundary.start.p_out=100000
+
+  rejection line=0 message=missing required key: boundary.start.T_load
+PASS boundary.start.T_load=4
+
+PASS all ramp bindings via CLI without file
+PASS temporary C fixture removed
+PASS params: passed=60 failed=0
+PASS ramp sample file loads
+  t=0 input=[2900000,0,0,100000,4]
+PASS five-channel independent expected sample
+  t=0.5 input=[2900000,0,0,100000,4]
+PASS five-channel independent expected sample
+  t=1 input=[2900000,1.6000000000000001,4.0999999999999996,100000,4]
+PASS five-channel independent expected sample
+  t=2 input=[3250000,1.825,4.5999999999999996,110000,8]
+PASS five-channel independent expected sample
+  t=3 input=[3600000,2.0499999999999998,5.0999999999999996,120000,12]
+PASS five-channel independent expected sample
+  t=5 input=[3600000,2.0499999999999998,5.0999999999999996,120000,12]
+PASS five-channel independent expected sample
+  max_abs_error [Pa,kg/s,kg/s,Pa,N m]=[0,0,0,0,0]
+PASS immediately before delay: zero requested flow
+PASS zero duration steps at delay
+PASS direct invalid ramp duration fails instead of silently becoming a step
+PASS descending ramps interpolate all channels
+PASS constant ignores time and returns all five inputs
+PASS finite opposite-sign endpoints avoid subtraction overflow
+PASS whole-step snapshot created
+PASS k1/k2/k3/k4/final consumer contract: one callback and immutable held copy
+PASS next whole step gets new sample
+PASS invalid time fails before callback without modifying snapshot
+PASS invalid callback output rejected atomically
+PASS null sample arguments rejected
+Whole-step hold is an interface/consumer test; actual RK4 wiring is reserved for S08.
+PASS boundary: passed=19 failed=0
+PASS 80 unique columns: independent names/order/units contract
+PASS open requested CSV (parent must already exist)
+PASS write known initial snapshot with h=0
+PASS logging leaves inputs/state/eval/diagnostics byte-identical
+PASS step-end t+h and stage diagnostics serialize without mutation
+PASS two rows explicitly flushed and closed successfully
+PASS C readback: exact header/row width and 160 independent numeric expectations
+  CSV=results/logger_fixture.csv rows=2 columns=80 values_read=160 max_abs_error=0
+  fixture only: t=2 -> t+h=2.125; raw p=[-123,19999.999], protected=[20000,20001];
+  k4 limit_hit=1 / converged=0 / count=80; final converged=1; eval_status=4 retained.
+  These are synthetic serialization values, not an engine simulation or solver test.
+PASS row before header rejected
+PASS duplicate header rejected without additional bytes
+PASS reinitialization of active logger rejected; original sink released
+PASS repeated close does not double-close
+PASS write after close rejected
+PASS injected header write failure reported
+PASS I/O error remains sticky; retries suppressed; resource closes
+PASS injected data write failure not counted as successful row
+PASS injected explicit flush failure returned and closed
+PASS buffered failure during final flush returned; close still executed
+PASS injected close failure returned
+PASS real fopen failure: no platform mkdir fallback
+PASS null/invalid lifecycle arguments reported
+PASS null snapshot rejected before write
+PASS missing observation pointer rejected
+PASS boundary time cannot be mistaken for final time
+PASS negative step duration rejected
+PASS nonfinite time rejected
+PASS overflowing final time rejected
+PASS positive h lost to time rounding rejected
+PASS NaN value rejected without partial row
+PASS infinite observation rejected without partial row
+PASS disabled iteration cannot claim convergence
+PASS limit hit and convergence cannot both be true
+PASS nonboolean iteration flag rejected
+PASS negative iteration count rejected
+PASS negative increment magnitude rejected
+PASS 17-digit formatter round-trips finite extremes, adjacent double and signed zero
+PASS logger: passed=35 failed=0
+PASS Gas zero status is not success
+PASS property adapter rejects null
+PASS fixed property adapter succeeds
+PASS screenshot Cp = 2860 J/(kg K)
+PASS turbine gamma/R = 1.18/380
+PASS turbine Cp independently equals 22420/9
+PASS two Cp values remain distinct (difference 3320/9)
+PASS explicit turbine calibration source
+PASS Gas accepts mathematical midpoint flow fixture
+PASS source flows summed once without unit conversion
+PASS total temperature preserved; static accounting 0.81 times total
+PASS total/static pressure accounting is direct Pa pass-through
+PASS Gas carries both property contracts
+PASS repeated evaluation does not accumulate fuel
+PASS explicit zero flow allowed for isolated blowdown
+PASS Gas applies no requested-flow or turbine temperature/pressure floor
+PASS one source alone is counted once
+PASS Gas rejects null output
+PASS invalid slot=0 case=0 rejected; output unchanged
+PASS invalid slot=0 case=1 rejected; output unchanged
+PASS invalid slot=0 case=2 rejected; output unchanged
+PASS invalid slot=0 case=3 rejected; output unchanged
+PASS invalid slot=1 case=0 rejected; output unchanged
+PASS invalid slot=1 case=1 rejected; output unchanged
+PASS invalid slot=1 case=2 rejected; output unchanged
+PASS invalid slot=1 case=3 rejected; output unchanged
+PASS invalid slot=2 case=0 rejected; output unchanged
+PASS invalid slot=2 case=1 rejected; output unchanged
+PASS invalid slot=2 case=2 rejected; output unchanged
+PASS invalid slot=2 case=3 rejected; output unchanged
+PASS invalid slot=3 case=0 rejected; output unchanged
+PASS invalid slot=3 case=1 rejected; output unchanged
+PASS invalid slot=3 case=2 rejected; output unchanged
+PASS invalid slot=3 case=3 rejected; output unchanged
+PASS zero pressure rejected atomically
+PASS zero total temperature rejected atomically
+PASS overflowing mass sum rejected atomically
+Gas evidence: Cp_source=2860 Cp_turbine=2491.1111111111118 delta_Cp=368.88888888888823
+PASS gas: passed=37 failed=0
+PASS sigmoid(0) = 0.5
+PASS sigmoid(-0) = 0.5
+PASS sigmoid rejects null output
+PASS sigmoid rejects nonfinite input without changing output
+PASS sigmoid rejects nonfinite input without changing output
+PASS sigmoid rejects nonfinite input without changing output
+PASS sigmoid(-DBL_MAX) finite saturation = 0
+PASS sigmoid(DBL_MAX) finite saturation = 1
+PASS open numeric evidence CSV
+PASS write numeric evidence header
+PASS normal [-4,4] finite/range, monotonicity, independent accuracy and CSV
+normal [-4,4] rows=8001 max_sigmoid_legacy_abs=2.2204460492503131e-16 max_oracle_abs=1.1102230246251565e-16 max_exp_rel=8.8817841970012523e-16
+PASS uncompressed [-500,500] finite/range, monotonicity, independent accuracy and CSV
+uncompressed [-500,500] rows=2001 max_sigmoid_legacy_abs=1.1102230246251565e-16 max_oracle_abs=1.1102230246251565e-16 max_exp_rel=8.8817841970012523e-16
+PASS polynomial edges finite/range, monotonicity, independent accuracy and CSV
+polynomial edges rows=123 max_sigmoid_legacy_abs=2.2204460492503131e-16 max_oracle_abs=1.1102230246251565e-16 max_exp_rel=8.8817841970012523e-16
+PASS extremes (legacy difference informational) finite/range, monotonicity, independent accuracy and CSV
+extremes (legacy difference informational) rows=12 max_sigmoid_legacy_abs=1.0064294952495521e-233 max_oracle_abs=4.9406564584124654e-324 max_exp_rel=0
+PASS legacy soft-limit difference independently identified at z=-600
+soft-limit evidence z=-600: new=2.6503965530043108e-261 legacy=7.9395079544194538e-247 legacy/new=299559246914193.38 compressed_abs_z=566.66666666666663
+PASS sigmoid complement symmetry at 101 pairs
+PASS close numeric evidence CSV
+PASS numeric: passed=17 failed=0
+PASS parse exactly 50 independent Appendix A rows (250 finite coefficients)
+PASS all 250 values, signs, row order and LOX/fuel/pressure columns match exactly
+PASS frozen default parameter contract valid
+C_exp comparison budget: sum_abs_beta=624.85535041000003 H_atol=4e-15 T_atol=1.5071326023927561e-09 K
+PASS open case and per-node evidence CSV
+PASS midpoint pure evaluation (params/View unchanged)
+PASS midpoint explicit status (positive finite T only)
+PASS midpoint normalization + all 50 z/H + sum + temperature
+PASS midpoint repeat is deterministic, no accumulated fuel
+PASS midpoint requested/effective and protection/extrapolation flags
+PASS midpoint outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS midpoint C_exp difference within separately derived budget
+PASS corner_000 pure evaluation (params/View unchanged)
+PASS corner_000 explicit status (positive finite T only)
+PASS corner_000 normalization + all 50 z/H + sum + temperature
+PASS corner_000 repeat is deterministic, no accumulated fuel
+PASS corner_000 requested/effective and protection/extrapolation flags
+PASS corner_000 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS corner_000 C_exp difference within separately derived budget
+PASS corner_001 pure evaluation (params/View unchanged)
+PASS corner_001 explicit status (positive finite T only)
+PASS corner_001 normalization + all 50 z/H + sum + temperature
+PASS corner_001 repeat is deterministic, no accumulated fuel
+PASS corner_001 requested/effective and protection/extrapolation flags
+PASS corner_001 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS corner_001 C_exp difference within separately derived budget
+PASS corner_010 pure evaluation (params/View unchanged)
+PASS corner_010 explicit status (positive finite T only)
+PASS corner_010 normalization + all 50 z/H + sum + temperature
+PASS corner_010 repeat is deterministic, no accumulated fuel
+PASS corner_010 requested/effective and protection/extrapolation flags
+PASS corner_010 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS corner_010 C_exp difference within separately derived budget
+PASS corner_011 pure evaluation (params/View unchanged)
+PASS corner_011 explicit status (positive finite T only)
+PASS corner_011 normalization + all 50 z/H + sum + temperature
+PASS corner_011 repeat is deterministic, no accumulated fuel
+PASS corner_011 requested/effective and protection/extrapolation flags
+PASS corner_011 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS corner_011 C_exp difference within separately derived budget
+PASS corner_100 pure evaluation (params/View unchanged)
+PASS corner_100 explicit status (positive finite T only)
+PASS corner_100 normalization + all 50 z/H + sum + temperature
+PASS corner_100 repeat is deterministic, no accumulated fuel
+PASS corner_100 requested/effective and protection/extrapolation flags
+PASS corner_100 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS corner_100 C_exp difference within separately derived budget
+PASS corner_101 pure evaluation (params/View unchanged)
+PASS corner_101 explicit status (positive finite T only)
+PASS corner_101 normalization + all 50 z/H + sum + temperature
+PASS corner_101 repeat is deterministic, no accumulated fuel
+PASS corner_101 requested/effective and protection/extrapolation flags
+PASS corner_101 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS corner_101 C_exp difference within separately derived budget
+PASS corner_110 pure evaluation (params/View unchanged)
+PASS corner_110 explicit status (positive finite T only)
+PASS corner_110 normalization + all 50 z/H + sum + temperature
+PASS corner_110 repeat is deterministic, no accumulated fuel
+PASS corner_110 requested/effective and protection/extrapolation flags
+PASS corner_110 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS corner_110 C_exp difference within separately derived budget
+PASS corner_111 pure evaluation (params/View unchanged)
+PASS corner_111 explicit status (positive finite T only)
+PASS corner_111 normalization + all 50 z/H + sum + temperature
+PASS corner_111 repeat is deterministic, no accumulated fuel
+PASS corner_111 requested/effective and protection/extrapolation flags
+PASS corner_111 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS corner_111 C_exp difference within separately derived budget
+PASS grid_000 pure evaluation (params/View unchanged)
+PASS grid_000 explicit status (positive finite T only)
+PASS grid_000 normalization + all 50 z/H + sum + temperature
+PASS grid_000 repeat is deterministic, no accumulated fuel
+PASS grid_000 requested/effective and protection/extrapolation flags
+PASS grid_000 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_000 C_exp difference within separately derived budget
+PASS grid_001 pure evaluation (params/View unchanged)
+PASS grid_001 explicit status (positive finite T only)
+PASS grid_001 normalization + all 50 z/H + sum + temperature
+PASS grid_001 repeat is deterministic, no accumulated fuel
+PASS grid_001 requested/effective and protection/extrapolation flags
+PASS grid_001 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_001 C_exp difference within separately derived budget
+PASS grid_002 pure evaluation (params/View unchanged)
+PASS grid_002 explicit status (positive finite T only)
+PASS grid_002 normalization + all 50 z/H + sum + temperature
+PASS grid_002 repeat is deterministic, no accumulated fuel
+PASS grid_002 requested/effective and protection/extrapolation flags
+PASS grid_002 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_002 C_exp difference within separately derived budget
+PASS grid_003 pure evaluation (params/View unchanged)
+PASS grid_003 explicit status (positive finite T only)
+PASS grid_003 normalization + all 50 z/H + sum + temperature
+PASS grid_003 repeat is deterministic, no accumulated fuel
+PASS grid_003 requested/effective and protection/extrapolation flags
+PASS grid_003 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_003 C_exp difference within separately derived budget
+PASS grid_004 pure evaluation (params/View unchanged)
+PASS grid_004 explicit status (positive finite T only)
+PASS grid_004 normalization + all 50 z/H + sum + temperature
+PASS grid_004 repeat is deterministic, no accumulated fuel
+PASS grid_004 requested/effective and protection/extrapolation flags
+PASS grid_004 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_004 C_exp difference within separately derived budget
+PASS grid_010 pure evaluation (params/View unchanged)
+PASS grid_010 explicit status (positive finite T only)
+PASS grid_010 normalization + all 50 z/H + sum + temperature
+PASS grid_010 repeat is deterministic, no accumulated fuel
+PASS grid_010 requested/effective and protection/extrapolation flags
+PASS grid_010 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_010 C_exp difference within separately derived budget
+PASS grid_011 pure evaluation (params/View unchanged)
+PASS grid_011 explicit status (positive finite T only)
+PASS grid_011 normalization + all 50 z/H + sum + temperature
+PASS grid_011 repeat is deterministic, no accumulated fuel
+PASS grid_011 requested/effective and protection/extrapolation flags
+PASS grid_011 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_011 C_exp difference within separately derived budget
+PASS grid_012 pure evaluation (params/View unchanged)
+PASS grid_012 explicit status (positive finite T only)
+PASS grid_012 normalization + all 50 z/H + sum + temperature
+PASS grid_012 repeat is deterministic, no accumulated fuel
+PASS grid_012 requested/effective and protection/extrapolation flags
+PASS grid_012 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_012 C_exp difference within separately derived budget
+PASS grid_013 pure evaluation (params/View unchanged)
+PASS grid_013 explicit status (positive finite T only)
+PASS grid_013 normalization + all 50 z/H + sum + temperature
+PASS grid_013 repeat is deterministic, no accumulated fuel
+PASS grid_013 requested/effective and protection/extrapolation flags
+PASS grid_013 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_013 C_exp difference within separately derived budget
+PASS grid_014 pure evaluation (params/View unchanged)
+PASS grid_014 explicit status (positive finite T only)
+PASS grid_014 normalization + all 50 z/H + sum + temperature
+PASS grid_014 repeat is deterministic, no accumulated fuel
+PASS grid_014 requested/effective and protection/extrapolation flags
+PASS grid_014 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_014 C_exp difference within separately derived budget
+PASS grid_020 pure evaluation (params/View unchanged)
+PASS grid_020 explicit status (positive finite T only)
+PASS grid_020 normalization + all 50 z/H + sum + temperature
+PASS grid_020 repeat is deterministic, no accumulated fuel
+PASS grid_020 requested/effective and protection/extrapolation flags
+PASS grid_020 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_020 C_exp difference within separately derived budget
+PASS grid_021 pure evaluation (params/View unchanged)
+PASS grid_021 explicit status (positive finite T only)
+PASS grid_021 normalization + all 50 z/H + sum + temperature
+PASS grid_021 repeat is deterministic, no accumulated fuel
+PASS grid_021 requested/effective and protection/extrapolation flags
+PASS grid_021 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_021 C_exp difference within separately derived budget
+PASS grid_022 pure evaluation (params/View unchanged)
+PASS grid_022 explicit status (positive finite T only)
+PASS grid_022 normalization + all 50 z/H + sum + temperature
+PASS grid_022 repeat is deterministic, no accumulated fuel
+PASS grid_022 requested/effective and protection/extrapolation flags
+PASS grid_022 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_022 C_exp difference within separately derived budget
+PASS grid_023 pure evaluation (params/View unchanged)
+PASS grid_023 explicit status (positive finite T only)
+PASS grid_023 normalization + all 50 z/H + sum + temperature
+PASS grid_023 repeat is deterministic, no accumulated fuel
+PASS grid_023 requested/effective and protection/extrapolation flags
+PASS grid_023 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_023 C_exp difference within separately derived budget
+PASS grid_024 pure evaluation (params/View unchanged)
+PASS grid_024 explicit status (positive finite T only)
+PASS grid_024 normalization + all 50 z/H + sum + temperature
+PASS grid_024 repeat is deterministic, no accumulated fuel
+PASS grid_024 requested/effective and protection/extrapolation flags
+PASS grid_024 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_024 C_exp difference within separately derived budget
+PASS grid_030 pure evaluation (params/View unchanged)
+PASS grid_030 explicit status (positive finite T only)
+PASS grid_030 normalization + all 50 z/H + sum + temperature
+PASS grid_030 repeat is deterministic, no accumulated fuel
+PASS grid_030 requested/effective and protection/extrapolation flags
+PASS grid_030 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_030 C_exp difference within separately derived budget
+PASS grid_031 pure evaluation (params/View unchanged)
+PASS grid_031 explicit status (positive finite T only)
+PASS grid_031 normalization + all 50 z/H + sum + temperature
+PASS grid_031 repeat is deterministic, no accumulated fuel
+PASS grid_031 requested/effective and protection/extrapolation flags
+PASS grid_031 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_031 C_exp difference within separately derived budget
+PASS grid_032 pure evaluation (params/View unchanged)
+PASS grid_032 explicit status (positive finite T only)
+PASS grid_032 normalization + all 50 z/H + sum + temperature
+PASS grid_032 repeat is deterministic, no accumulated fuel
+PASS grid_032 requested/effective and protection/extrapolation flags
+PASS grid_032 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_032 C_exp difference within separately derived budget
+PASS grid_033 pure evaluation (params/View unchanged)
+PASS grid_033 explicit status (positive finite T only)
+PASS grid_033 normalization + all 50 z/H + sum + temperature
+PASS grid_033 repeat is deterministic, no accumulated fuel
+PASS grid_033 requested/effective and protection/extrapolation flags
+PASS grid_033 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_033 C_exp difference within separately derived budget
+PASS grid_034 pure evaluation (params/View unchanged)
+PASS grid_034 explicit status (positive finite T only)
+PASS grid_034 normalization + all 50 z/H + sum + temperature
+PASS grid_034 repeat is deterministic, no accumulated fuel
+PASS grid_034 requested/effective and protection/extrapolation flags
+PASS grid_034 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_034 C_exp difference within separately derived budget
+PASS grid_040 pure evaluation (params/View unchanged)
+PASS grid_040 explicit status (positive finite T only)
+PASS grid_040 normalization + all 50 z/H + sum + temperature
+PASS grid_040 repeat is deterministic, no accumulated fuel
+PASS grid_040 requested/effective and protection/extrapolation flags
+PASS grid_040 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_040 C_exp difference within separately derived budget
+PASS grid_041 pure evaluation (params/View unchanged)
+PASS grid_041 explicit status (positive finite T only)
+PASS grid_041 normalization + all 50 z/H + sum + temperature
+PASS grid_041 repeat is deterministic, no accumulated fuel
+PASS grid_041 requested/effective and protection/extrapolation flags
+PASS grid_041 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_041 C_exp difference within separately derived budget
+PASS grid_042 pure evaluation (params/View unchanged)
+PASS grid_042 explicit status (positive finite T only)
+PASS grid_042 normalization + all 50 z/H + sum + temperature
+PASS grid_042 repeat is deterministic, no accumulated fuel
+PASS grid_042 requested/effective and protection/extrapolation flags
+PASS grid_042 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_042 C_exp difference within separately derived budget
+PASS grid_043 pure evaluation (params/View unchanged)
+PASS grid_043 explicit status (positive finite T only)
+PASS grid_043 normalization + all 50 z/H + sum + temperature
+PASS grid_043 repeat is deterministic, no accumulated fuel
+PASS grid_043 requested/effective and protection/extrapolation flags
+PASS grid_043 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_043 C_exp difference within separately derived budget
+PASS grid_044 pure evaluation (params/View unchanged)
+PASS grid_044 explicit status (positive finite T only)
+PASS grid_044 normalization + all 50 z/H + sum + temperature
+PASS grid_044 repeat is deterministic, no accumulated fuel
+PASS grid_044 requested/effective and protection/extrapolation flags
+PASS grid_044 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_044 C_exp difference within separately derived budget
+PASS grid_100 pure evaluation (params/View unchanged)
+PASS grid_100 explicit status (positive finite T only)
+PASS grid_100 normalization + all 50 z/H + sum + temperature
+PASS grid_100 repeat is deterministic, no accumulated fuel
+PASS grid_100 requested/effective and protection/extrapolation flags
+PASS grid_100 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_100 C_exp difference within separately derived budget
+PASS grid_101 pure evaluation (params/View unchanged)
+PASS grid_101 explicit status (positive finite T only)
+PASS grid_101 normalization + all 50 z/H + sum + temperature
+PASS grid_101 repeat is deterministic, no accumulated fuel
+PASS grid_101 requested/effective and protection/extrapolation flags
+PASS grid_101 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_101 C_exp difference within separately derived budget
+PASS grid_102 pure evaluation (params/View unchanged)
+PASS grid_102 explicit status (positive finite T only)
+PASS grid_102 normalization + all 50 z/H + sum + temperature
+PASS grid_102 repeat is deterministic, no accumulated fuel
+PASS grid_102 requested/effective and protection/extrapolation flags
+PASS grid_102 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_102 C_exp difference within separately derived budget
+PASS grid_103 pure evaluation (params/View unchanged)
+PASS grid_103 explicit status (positive finite T only)
+PASS grid_103 normalization + all 50 z/H + sum + temperature
+PASS grid_103 repeat is deterministic, no accumulated fuel
+PASS grid_103 requested/effective and protection/extrapolation flags
+PASS grid_103 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_103 C_exp difference within separately derived budget
+PASS grid_104 pure evaluation (params/View unchanged)
+PASS grid_104 explicit status (positive finite T only)
+PASS grid_104 normalization + all 50 z/H + sum + temperature
+PASS grid_104 repeat is deterministic, no accumulated fuel
+PASS grid_104 requested/effective and protection/extrapolation flags
+PASS grid_104 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_104 C_exp difference within separately derived budget
+PASS grid_110 pure evaluation (params/View unchanged)
+PASS grid_110 explicit status (positive finite T only)
+PASS grid_110 normalization + all 50 z/H + sum + temperature
+PASS grid_110 repeat is deterministic, no accumulated fuel
+PASS grid_110 requested/effective and protection/extrapolation flags
+PASS grid_110 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_110 C_exp difference within separately derived budget
+PASS grid_111 pure evaluation (params/View unchanged)
+PASS grid_111 explicit status (positive finite T only)
+PASS grid_111 normalization + all 50 z/H + sum + temperature
+PASS grid_111 repeat is deterministic, no accumulated fuel
+PASS grid_111 requested/effective and protection/extrapolation flags
+PASS grid_111 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_111 C_exp difference within separately derived budget
+PASS grid_112 pure evaluation (params/View unchanged)
+PASS grid_112 explicit status (positive finite T only)
+PASS grid_112 normalization + all 50 z/H + sum + temperature
+PASS grid_112 repeat is deterministic, no accumulated fuel
+PASS grid_112 requested/effective and protection/extrapolation flags
+PASS grid_112 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_112 C_exp difference within separately derived budget
+PASS grid_113 pure evaluation (params/View unchanged)
+PASS grid_113 explicit status (positive finite T only)
+PASS grid_113 normalization + all 50 z/H + sum + temperature
+PASS grid_113 repeat is deterministic, no accumulated fuel
+PASS grid_113 requested/effective and protection/extrapolation flags
+PASS grid_113 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_113 C_exp difference within separately derived budget
+PASS grid_114 pure evaluation (params/View unchanged)
+PASS grid_114 explicit status (positive finite T only)
+PASS grid_114 normalization + all 50 z/H + sum + temperature
+PASS grid_114 repeat is deterministic, no accumulated fuel
+PASS grid_114 requested/effective and protection/extrapolation flags
+PASS grid_114 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_114 C_exp difference within separately derived budget
+PASS grid_120 pure evaluation (params/View unchanged)
+PASS grid_120 explicit status (positive finite T only)
+PASS grid_120 normalization + all 50 z/H + sum + temperature
+PASS grid_120 repeat is deterministic, no accumulated fuel
+PASS grid_120 requested/effective and protection/extrapolation flags
+PASS grid_120 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_120 C_exp difference within separately derived budget
+PASS grid_121 pure evaluation (params/View unchanged)
+PASS grid_121 explicit status (positive finite T only)
+PASS grid_121 normalization + all 50 z/H + sum + temperature
+PASS grid_121 repeat is deterministic, no accumulated fuel
+PASS grid_121 requested/effective and protection/extrapolation flags
+PASS grid_121 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_121 C_exp difference within separately derived budget
+PASS grid_122 pure evaluation (params/View unchanged)
+PASS grid_122 explicit status (positive finite T only)
+PASS grid_122 normalization + all 50 z/H + sum + temperature
+PASS grid_122 repeat is deterministic, no accumulated fuel
+PASS grid_122 requested/effective and protection/extrapolation flags
+PASS grid_122 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_122 C_exp difference within separately derived budget
+PASS grid_123 pure evaluation (params/View unchanged)
+PASS grid_123 explicit status (positive finite T only)
+PASS grid_123 normalization + all 50 z/H + sum + temperature
+PASS grid_123 repeat is deterministic, no accumulated fuel
+PASS grid_123 requested/effective and protection/extrapolation flags
+PASS grid_123 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_123 C_exp difference within separately derived budget
+PASS grid_124 pure evaluation (params/View unchanged)
+PASS grid_124 explicit status (positive finite T only)
+PASS grid_124 normalization + all 50 z/H + sum + temperature
+PASS grid_124 repeat is deterministic, no accumulated fuel
+PASS grid_124 requested/effective and protection/extrapolation flags
+PASS grid_124 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_124 C_exp difference within separately derived budget
+PASS grid_130 pure evaluation (params/View unchanged)
+PASS grid_130 explicit status (positive finite T only)
+PASS grid_130 normalization + all 50 z/H + sum + temperature
+PASS grid_130 repeat is deterministic, no accumulated fuel
+PASS grid_130 requested/effective and protection/extrapolation flags
+PASS grid_130 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_130 C_exp difference within separately derived budget
+PASS grid_131 pure evaluation (params/View unchanged)
+PASS grid_131 explicit status (positive finite T only)
+PASS grid_131 normalization + all 50 z/H + sum + temperature
+PASS grid_131 repeat is deterministic, no accumulated fuel
+PASS grid_131 requested/effective and protection/extrapolation flags
+PASS grid_131 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_131 C_exp difference within separately derived budget
+PASS grid_132 pure evaluation (params/View unchanged)
+PASS grid_132 explicit status (positive finite T only)
+PASS grid_132 normalization + all 50 z/H + sum + temperature
+PASS grid_132 repeat is deterministic, no accumulated fuel
+PASS grid_132 requested/effective and protection/extrapolation flags
+PASS grid_132 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_132 C_exp difference within separately derived budget
+PASS grid_133 pure evaluation (params/View unchanged)
+PASS grid_133 explicit status (positive finite T only)
+PASS grid_133 normalization + all 50 z/H + sum + temperature
+PASS grid_133 repeat is deterministic, no accumulated fuel
+PASS grid_133 requested/effective and protection/extrapolation flags
+PASS grid_133 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_133 C_exp difference within separately derived budget
+PASS grid_134 pure evaluation (params/View unchanged)
+PASS grid_134 explicit status (positive finite T only)
+PASS grid_134 normalization + all 50 z/H + sum + temperature
+PASS grid_134 repeat is deterministic, no accumulated fuel
+PASS grid_134 requested/effective and protection/extrapolation flags
+PASS grid_134 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_134 C_exp difference within separately derived budget
+PASS grid_140 pure evaluation (params/View unchanged)
+PASS grid_140 explicit status (positive finite T only)
+PASS grid_140 normalization + all 50 z/H + sum + temperature
+PASS grid_140 repeat is deterministic, no accumulated fuel
+PASS grid_140 requested/effective and protection/extrapolation flags
+PASS grid_140 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_140 C_exp difference within separately derived budget
+PASS grid_141 pure evaluation (params/View unchanged)
+PASS grid_141 explicit status (positive finite T only)
+PASS grid_141 normalization + all 50 z/H + sum + temperature
+PASS grid_141 repeat is deterministic, no accumulated fuel
+PASS grid_141 requested/effective and protection/extrapolation flags
+PASS grid_141 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_141 C_exp difference within separately derived budget
+PASS grid_142 pure evaluation (params/View unchanged)
+PASS grid_142 explicit status (positive finite T only)
+PASS grid_142 normalization + all 50 z/H + sum + temperature
+PASS grid_142 repeat is deterministic, no accumulated fuel
+PASS grid_142 requested/effective and protection/extrapolation flags
+PASS grid_142 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_142 C_exp difference within separately derived budget
+PASS grid_143 pure evaluation (params/View unchanged)
+PASS grid_143 explicit status (positive finite T only)
+PASS grid_143 normalization + all 50 z/H + sum + temperature
+PASS grid_143 repeat is deterministic, no accumulated fuel
+PASS grid_143 requested/effective and protection/extrapolation flags
+PASS grid_143 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_143 C_exp difference within separately derived budget
+PASS grid_144 pure evaluation (params/View unchanged)
+PASS grid_144 explicit status (positive finite T only)
+PASS grid_144 normalization + all 50 z/H + sum + temperature
+PASS grid_144 repeat is deterministic, no accumulated fuel
+PASS grid_144 requested/effective and protection/extrapolation flags
+PASS grid_144 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_144 C_exp difference within separately derived budget
+PASS grid_200 pure evaluation (params/View unchanged)
+PASS grid_200 explicit status (positive finite T only)
+PASS grid_200 normalization + all 50 z/H + sum + temperature
+PASS grid_200 repeat is deterministic, no accumulated fuel
+PASS grid_200 requested/effective and protection/extrapolation flags
+PASS grid_200 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_200 C_exp difference within separately derived budget
+PASS grid_201 pure evaluation (params/View unchanged)
+PASS grid_201 explicit status (positive finite T only)
+PASS grid_201 normalization + all 50 z/H + sum + temperature
+PASS grid_201 repeat is deterministic, no accumulated fuel
+PASS grid_201 requested/effective and protection/extrapolation flags
+PASS grid_201 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_201 C_exp difference within separately derived budget
+PASS grid_202 pure evaluation (params/View unchanged)
+PASS grid_202 explicit status (positive finite T only)
+PASS grid_202 normalization + all 50 z/H + sum + temperature
+PASS grid_202 repeat is deterministic, no accumulated fuel
+PASS grid_202 requested/effective and protection/extrapolation flags
+PASS grid_202 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_202 C_exp difference within separately derived budget
+PASS grid_203 pure evaluation (params/View unchanged)
+PASS grid_203 explicit status (positive finite T only)
+PASS grid_203 normalization + all 50 z/H + sum + temperature
+PASS grid_203 repeat is deterministic, no accumulated fuel
+PASS grid_203 requested/effective and protection/extrapolation flags
+PASS grid_203 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_203 C_exp difference within separately derived budget
+PASS grid_204 pure evaluation (params/View unchanged)
+PASS grid_204 explicit status (positive finite T only)
+PASS grid_204 normalization + all 50 z/H + sum + temperature
+PASS grid_204 repeat is deterministic, no accumulated fuel
+PASS grid_204 requested/effective and protection/extrapolation flags
+PASS grid_204 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_204 C_exp difference within separately derived budget
+PASS grid_210 pure evaluation (params/View unchanged)
+PASS grid_210 explicit status (positive finite T only)
+PASS grid_210 normalization + all 50 z/H + sum + temperature
+PASS grid_210 repeat is deterministic, no accumulated fuel
+PASS grid_210 requested/effective and protection/extrapolation flags
+PASS grid_210 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_210 C_exp difference within separately derived budget
+PASS grid_211 pure evaluation (params/View unchanged)
+PASS grid_211 explicit status (positive finite T only)
+PASS grid_211 normalization + all 50 z/H + sum + temperature
+PASS grid_211 repeat is deterministic, no accumulated fuel
+PASS grid_211 requested/effective and protection/extrapolation flags
+PASS grid_211 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_211 C_exp difference within separately derived budget
+PASS grid_212 pure evaluation (params/View unchanged)
+PASS grid_212 explicit status (positive finite T only)
+PASS grid_212 normalization + all 50 z/H + sum + temperature
+PASS grid_212 repeat is deterministic, no accumulated fuel
+PASS grid_212 requested/effective and protection/extrapolation flags
+PASS grid_212 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_212 C_exp difference within separately derived budget
+PASS grid_213 pure evaluation (params/View unchanged)
+PASS grid_213 explicit status (positive finite T only)
+PASS grid_213 normalization + all 50 z/H + sum + temperature
+PASS grid_213 repeat is deterministic, no accumulated fuel
+PASS grid_213 requested/effective and protection/extrapolation flags
+PASS grid_213 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_213 C_exp difference within separately derived budget
+PASS grid_214 pure evaluation (params/View unchanged)
+PASS grid_214 explicit status (positive finite T only)
+PASS grid_214 normalization + all 50 z/H + sum + temperature
+PASS grid_214 repeat is deterministic, no accumulated fuel
+PASS grid_214 requested/effective and protection/extrapolation flags
+PASS grid_214 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_214 C_exp difference within separately derived budget
+PASS grid_220 pure evaluation (params/View unchanged)
+PASS grid_220 explicit status (positive finite T only)
+PASS grid_220 normalization + all 50 z/H + sum + temperature
+PASS grid_220 repeat is deterministic, no accumulated fuel
+PASS grid_220 requested/effective and protection/extrapolation flags
+PASS grid_220 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_220 C_exp difference within separately derived budget
+PASS grid_221 pure evaluation (params/View unchanged)
+PASS grid_221 explicit status (positive finite T only)
+PASS grid_221 normalization + all 50 z/H + sum + temperature
+PASS grid_221 repeat is deterministic, no accumulated fuel
+PASS grid_221 requested/effective and protection/extrapolation flags
+PASS grid_221 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_221 C_exp difference within separately derived budget
+PASS grid_222 pure evaluation (params/View unchanged)
+PASS grid_222 explicit status (positive finite T only)
+PASS grid_222 normalization + all 50 z/H + sum + temperature
+PASS grid_222 repeat is deterministic, no accumulated fuel
+PASS grid_222 requested/effective and protection/extrapolation flags
+PASS grid_222 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_222 C_exp difference within separately derived budget
+PASS grid_223 pure evaluation (params/View unchanged)
+PASS grid_223 explicit status (positive finite T only)
+PASS grid_223 normalization + all 50 z/H + sum + temperature
+PASS grid_223 repeat is deterministic, no accumulated fuel
+PASS grid_223 requested/effective and protection/extrapolation flags
+PASS grid_223 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_223 C_exp difference within separately derived budget
+PASS grid_224 pure evaluation (params/View unchanged)
+PASS grid_224 explicit status (positive finite T only)
+PASS grid_224 normalization + all 50 z/H + sum + temperature
+PASS grid_224 repeat is deterministic, no accumulated fuel
+PASS grid_224 requested/effective and protection/extrapolation flags
+PASS grid_224 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_224 C_exp difference within separately derived budget
+PASS grid_230 pure evaluation (params/View unchanged)
+PASS grid_230 explicit status (positive finite T only)
+PASS grid_230 normalization + all 50 z/H + sum + temperature
+PASS grid_230 repeat is deterministic, no accumulated fuel
+PASS grid_230 requested/effective and protection/extrapolation flags
+PASS grid_230 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_230 C_exp difference within separately derived budget
+PASS grid_231 pure evaluation (params/View unchanged)
+PASS grid_231 explicit status (positive finite T only)
+PASS grid_231 normalization + all 50 z/H + sum + temperature
+PASS grid_231 repeat is deterministic, no accumulated fuel
+PASS grid_231 requested/effective and protection/extrapolation flags
+PASS grid_231 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_231 C_exp difference within separately derived budget
+PASS grid_232 pure evaluation (params/View unchanged)
+PASS grid_232 explicit status (positive finite T only)
+PASS grid_232 normalization + all 50 z/H + sum + temperature
+PASS grid_232 repeat is deterministic, no accumulated fuel
+PASS grid_232 requested/effective and protection/extrapolation flags
+PASS grid_232 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_232 C_exp difference within separately derived budget
+PASS grid_233 pure evaluation (params/View unchanged)
+PASS grid_233 explicit status (positive finite T only)
+PASS grid_233 normalization + all 50 z/H + sum + temperature
+PASS grid_233 repeat is deterministic, no accumulated fuel
+PASS grid_233 requested/effective and protection/extrapolation flags
+PASS grid_233 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_233 C_exp difference within separately derived budget
+PASS grid_234 pure evaluation (params/View unchanged)
+PASS grid_234 explicit status (positive finite T only)
+PASS grid_234 normalization + all 50 z/H + sum + temperature
+PASS grid_234 repeat is deterministic, no accumulated fuel
+PASS grid_234 requested/effective and protection/extrapolation flags
+PASS grid_234 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_234 C_exp difference within separately derived budget
+PASS grid_240 pure evaluation (params/View unchanged)
+PASS grid_240 explicit status (positive finite T only)
+PASS grid_240 normalization + all 50 z/H + sum + temperature
+PASS grid_240 repeat is deterministic, no accumulated fuel
+PASS grid_240 requested/effective and protection/extrapolation flags
+PASS grid_240 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_240 C_exp difference within separately derived budget
+PASS grid_241 pure evaluation (params/View unchanged)
+PASS grid_241 explicit status (positive finite T only)
+PASS grid_241 normalization + all 50 z/H + sum + temperature
+PASS grid_241 repeat is deterministic, no accumulated fuel
+PASS grid_241 requested/effective and protection/extrapolation flags
+PASS grid_241 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_241 C_exp difference within separately derived budget
+PASS grid_242 pure evaluation (params/View unchanged)
+PASS grid_242 explicit status (positive finite T only)
+PASS grid_242 normalization + all 50 z/H + sum + temperature
+PASS grid_242 repeat is deterministic, no accumulated fuel
+PASS grid_242 requested/effective and protection/extrapolation flags
+PASS grid_242 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_242 C_exp difference within separately derived budget
+PASS grid_243 pure evaluation (params/View unchanged)
+PASS grid_243 explicit status (positive finite T only)
+PASS grid_243 normalization + all 50 z/H + sum + temperature
+PASS grid_243 repeat is deterministic, no accumulated fuel
+PASS grid_243 requested/effective and protection/extrapolation flags
+PASS grid_243 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_243 C_exp difference within separately derived budget
+PASS grid_244 pure evaluation (params/View unchanged)
+PASS grid_244 explicit status (positive finite T only)
+PASS grid_244 normalization + all 50 z/H + sum + temperature
+PASS grid_244 repeat is deterministic, no accumulated fuel
+PASS grid_244 requested/effective and protection/extrapolation flags
+PASS grid_244 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_244 C_exp difference within separately derived budget
+PASS grid_300 pure evaluation (params/View unchanged)
+PASS grid_300 explicit status (positive finite T only)
+PASS grid_300 normalization + all 50 z/H + sum + temperature
+PASS grid_300 repeat is deterministic, no accumulated fuel
+PASS grid_300 requested/effective and protection/extrapolation flags
+PASS grid_300 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_300 C_exp difference within separately derived budget
+PASS grid_301 pure evaluation (params/View unchanged)
+PASS grid_301 explicit status (positive finite T only)
+PASS grid_301 normalization + all 50 z/H + sum + temperature
+PASS grid_301 repeat is deterministic, no accumulated fuel
+PASS grid_301 requested/effective and protection/extrapolation flags
+PASS grid_301 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_301 C_exp difference within separately derived budget
+PASS grid_302 pure evaluation (params/View unchanged)
+PASS grid_302 explicit status (positive finite T only)
+PASS grid_302 normalization + all 50 z/H + sum + temperature
+PASS grid_302 repeat is deterministic, no accumulated fuel
+PASS grid_302 requested/effective and protection/extrapolation flags
+PASS grid_302 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_302 C_exp difference within separately derived budget
+PASS grid_303 pure evaluation (params/View unchanged)
+PASS grid_303 explicit status (positive finite T only)
+PASS grid_303 normalization + all 50 z/H + sum + temperature
+PASS grid_303 repeat is deterministic, no accumulated fuel
+PASS grid_303 requested/effective and protection/extrapolation flags
+PASS grid_303 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_303 C_exp difference within separately derived budget
+PASS grid_304 pure evaluation (params/View unchanged)
+PASS grid_304 explicit status (positive finite T only)
+PASS grid_304 normalization + all 50 z/H + sum + temperature
+PASS grid_304 repeat is deterministic, no accumulated fuel
+PASS grid_304 requested/effective and protection/extrapolation flags
+PASS grid_304 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_304 C_exp difference within separately derived budget
+PASS grid_310 pure evaluation (params/View unchanged)
+PASS grid_310 explicit status (positive finite T only)
+PASS grid_310 normalization + all 50 z/H + sum + temperature
+PASS grid_310 repeat is deterministic, no accumulated fuel
+PASS grid_310 requested/effective and protection/extrapolation flags
+PASS grid_310 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_310 C_exp difference within separately derived budget
+PASS grid_311 pure evaluation (params/View unchanged)
+PASS grid_311 explicit status (positive finite T only)
+PASS grid_311 normalization + all 50 z/H + sum + temperature
+PASS grid_311 repeat is deterministic, no accumulated fuel
+PASS grid_311 requested/effective and protection/extrapolation flags
+PASS grid_311 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_311 C_exp difference within separately derived budget
+PASS grid_312 pure evaluation (params/View unchanged)
+PASS grid_312 explicit status (positive finite T only)
+PASS grid_312 normalization + all 50 z/H + sum + temperature
+PASS grid_312 repeat is deterministic, no accumulated fuel
+PASS grid_312 requested/effective and protection/extrapolation flags
+PASS grid_312 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_312 C_exp difference within separately derived budget
+PASS grid_313 pure evaluation (params/View unchanged)
+PASS grid_313 explicit status (positive finite T only)
+PASS grid_313 normalization + all 50 z/H + sum + temperature
+PASS grid_313 repeat is deterministic, no accumulated fuel
+PASS grid_313 requested/effective and protection/extrapolation flags
+PASS grid_313 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_313 C_exp difference within separately derived budget
+PASS grid_314 pure evaluation (params/View unchanged)
+PASS grid_314 explicit status (positive finite T only)
+PASS grid_314 normalization + all 50 z/H + sum + temperature
+PASS grid_314 repeat is deterministic, no accumulated fuel
+PASS grid_314 requested/effective and protection/extrapolation flags
+PASS grid_314 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_314 C_exp difference within separately derived budget
+PASS grid_320 pure evaluation (params/View unchanged)
+PASS grid_320 explicit status (positive finite T only)
+PASS grid_320 normalization + all 50 z/H + sum + temperature
+PASS grid_320 repeat is deterministic, no accumulated fuel
+PASS grid_320 requested/effective and protection/extrapolation flags
+PASS grid_320 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_320 C_exp difference within separately derived budget
+PASS grid_321 pure evaluation (params/View unchanged)
+PASS grid_321 explicit status (positive finite T only)
+PASS grid_321 normalization + all 50 z/H + sum + temperature
+PASS grid_321 repeat is deterministic, no accumulated fuel
+PASS grid_321 requested/effective and protection/extrapolation flags
+PASS grid_321 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_321 C_exp difference within separately derived budget
+PASS grid_322 pure evaluation (params/View unchanged)
+PASS grid_322 explicit status (positive finite T only)
+PASS grid_322 normalization + all 50 z/H + sum + temperature
+PASS grid_322 repeat is deterministic, no accumulated fuel
+PASS grid_322 requested/effective and protection/extrapolation flags
+PASS grid_322 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_322 C_exp difference within separately derived budget
+PASS grid_323 pure evaluation (params/View unchanged)
+PASS grid_323 explicit status (positive finite T only)
+PASS grid_323 normalization + all 50 z/H + sum + temperature
+PASS grid_323 repeat is deterministic, no accumulated fuel
+PASS grid_323 requested/effective and protection/extrapolation flags
+PASS grid_323 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_323 C_exp difference within separately derived budget
+PASS grid_324 pure evaluation (params/View unchanged)
+PASS grid_324 explicit status (positive finite T only)
+PASS grid_324 normalization + all 50 z/H + sum + temperature
+PASS grid_324 repeat is deterministic, no accumulated fuel
+PASS grid_324 requested/effective and protection/extrapolation flags
+PASS grid_324 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_324 C_exp difference within separately derived budget
+PASS grid_330 pure evaluation (params/View unchanged)
+PASS grid_330 explicit status (positive finite T only)
+PASS grid_330 normalization + all 50 z/H + sum + temperature
+PASS grid_330 repeat is deterministic, no accumulated fuel
+PASS grid_330 requested/effective and protection/extrapolation flags
+PASS grid_330 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_330 C_exp difference within separately derived budget
+PASS grid_331 pure evaluation (params/View unchanged)
+PASS grid_331 explicit status (positive finite T only)
+PASS grid_331 normalization + all 50 z/H + sum + temperature
+PASS grid_331 repeat is deterministic, no accumulated fuel
+PASS grid_331 requested/effective and protection/extrapolation flags
+PASS grid_331 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_331 C_exp difference within separately derived budget
+PASS grid_332 pure evaluation (params/View unchanged)
+PASS grid_332 explicit status (positive finite T only)
+PASS grid_332 normalization + all 50 z/H + sum + temperature
+PASS grid_332 repeat is deterministic, no accumulated fuel
+PASS grid_332 requested/effective and protection/extrapolation flags
+PASS grid_332 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_332 C_exp difference within separately derived budget
+PASS grid_333 pure evaluation (params/View unchanged)
+PASS grid_333 explicit status (positive finite T only)
+PASS grid_333 normalization + all 50 z/H + sum + temperature
+PASS grid_333 repeat is deterministic, no accumulated fuel
+PASS grid_333 requested/effective and protection/extrapolation flags
+PASS grid_333 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_333 C_exp difference within separately derived budget
+PASS grid_334 pure evaluation (params/View unchanged)
+PASS grid_334 explicit status (positive finite T only)
+PASS grid_334 normalization + all 50 z/H + sum + temperature
+PASS grid_334 repeat is deterministic, no accumulated fuel
+PASS grid_334 requested/effective and protection/extrapolation flags
+PASS grid_334 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_334 C_exp difference within separately derived budget
+PASS grid_340 pure evaluation (params/View unchanged)
+PASS grid_340 explicit status (positive finite T only)
+PASS grid_340 normalization + all 50 z/H + sum + temperature
+PASS grid_340 repeat is deterministic, no accumulated fuel
+PASS grid_340 requested/effective and protection/extrapolation flags
+PASS grid_340 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_340 C_exp difference within separately derived budget
+PASS grid_341 pure evaluation (params/View unchanged)
+PASS grid_341 explicit status (positive finite T only)
+PASS grid_341 normalization + all 50 z/H + sum + temperature
+PASS grid_341 repeat is deterministic, no accumulated fuel
+PASS grid_341 requested/effective and protection/extrapolation flags
+PASS grid_341 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_341 C_exp difference within separately derived budget
+PASS grid_342 pure evaluation (params/View unchanged)
+PASS grid_342 explicit status (positive finite T only)
+PASS grid_342 normalization + all 50 z/H + sum + temperature
+PASS grid_342 repeat is deterministic, no accumulated fuel
+PASS grid_342 requested/effective and protection/extrapolation flags
+PASS grid_342 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_342 C_exp difference within separately derived budget
+PASS grid_343 pure evaluation (params/View unchanged)
+PASS grid_343 explicit status (positive finite T only)
+PASS grid_343 normalization + all 50 z/H + sum + temperature
+PASS grid_343 repeat is deterministic, no accumulated fuel
+PASS grid_343 requested/effective and protection/extrapolation flags
+PASS grid_343 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_343 C_exp difference within separately derived budget
+PASS grid_344 pure evaluation (params/View unchanged)
+PASS grid_344 explicit status (positive finite T only)
+PASS grid_344 normalization + all 50 z/H + sum + temperature
+PASS grid_344 repeat is deterministic, no accumulated fuel
+PASS grid_344 requested/effective and protection/extrapolation flags
+PASS grid_344 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_344 C_exp difference within separately derived budget
+PASS grid_400 pure evaluation (params/View unchanged)
+PASS grid_400 explicit status (positive finite T only)
+PASS grid_400 normalization + all 50 z/H + sum + temperature
+PASS grid_400 repeat is deterministic, no accumulated fuel
+PASS grid_400 requested/effective and protection/extrapolation flags
+PASS grid_400 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_400 C_exp difference within separately derived budget
+PASS grid_401 pure evaluation (params/View unchanged)
+PASS grid_401 explicit status (positive finite T only)
+PASS grid_401 normalization + all 50 z/H + sum + temperature
+PASS grid_401 repeat is deterministic, no accumulated fuel
+PASS grid_401 requested/effective and protection/extrapolation flags
+PASS grid_401 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_401 C_exp difference within separately derived budget
+PASS grid_402 pure evaluation (params/View unchanged)
+PASS grid_402 explicit status (positive finite T only)
+PASS grid_402 normalization + all 50 z/H + sum + temperature
+PASS grid_402 repeat is deterministic, no accumulated fuel
+PASS grid_402 requested/effective and protection/extrapolation flags
+PASS grid_402 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_402 C_exp difference within separately derived budget
+PASS grid_403 pure evaluation (params/View unchanged)
+PASS grid_403 explicit status (positive finite T only)
+PASS grid_403 normalization + all 50 z/H + sum + temperature
+PASS grid_403 repeat is deterministic, no accumulated fuel
+PASS grid_403 requested/effective and protection/extrapolation flags
+PASS grid_403 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_403 C_exp difference within separately derived budget
+PASS grid_404 pure evaluation (params/View unchanged)
+PASS grid_404 explicit status (positive finite T only)
+PASS grid_404 normalization + all 50 z/H + sum + temperature
+PASS grid_404 repeat is deterministic, no accumulated fuel
+PASS grid_404 requested/effective and protection/extrapolation flags
+PASS grid_404 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_404 C_exp difference within separately derived budget
+PASS grid_410 pure evaluation (params/View unchanged)
+PASS grid_410 explicit status (positive finite T only)
+PASS grid_410 normalization + all 50 z/H + sum + temperature
+PASS grid_410 repeat is deterministic, no accumulated fuel
+PASS grid_410 requested/effective and protection/extrapolation flags
+PASS grid_410 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_410 C_exp difference within separately derived budget
+PASS grid_411 pure evaluation (params/View unchanged)
+PASS grid_411 explicit status (positive finite T only)
+PASS grid_411 normalization + all 50 z/H + sum + temperature
+PASS grid_411 repeat is deterministic, no accumulated fuel
+PASS grid_411 requested/effective and protection/extrapolation flags
+PASS grid_411 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_411 C_exp difference within separately derived budget
+PASS grid_412 pure evaluation (params/View unchanged)
+PASS grid_412 explicit status (positive finite T only)
+PASS grid_412 normalization + all 50 z/H + sum + temperature
+PASS grid_412 repeat is deterministic, no accumulated fuel
+PASS grid_412 requested/effective and protection/extrapolation flags
+PASS grid_412 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_412 C_exp difference within separately derived budget
+PASS grid_413 pure evaluation (params/View unchanged)
+PASS grid_413 explicit status (positive finite T only)
+PASS grid_413 normalization + all 50 z/H + sum + temperature
+PASS grid_413 repeat is deterministic, no accumulated fuel
+PASS grid_413 requested/effective and protection/extrapolation flags
+PASS grid_413 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_413 C_exp difference within separately derived budget
+PASS grid_414 pure evaluation (params/View unchanged)
+PASS grid_414 explicit status (positive finite T only)
+PASS grid_414 normalization + all 50 z/H + sum + temperature
+PASS grid_414 repeat is deterministic, no accumulated fuel
+PASS grid_414 requested/effective and protection/extrapolation flags
+PASS grid_414 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_414 C_exp difference within separately derived budget
+PASS grid_420 pure evaluation (params/View unchanged)
+PASS grid_420 explicit status (positive finite T only)
+PASS grid_420 normalization + all 50 z/H + sum + temperature
+PASS grid_420 repeat is deterministic, no accumulated fuel
+PASS grid_420 requested/effective and protection/extrapolation flags
+PASS grid_420 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_420 C_exp difference within separately derived budget
+PASS grid_421 pure evaluation (params/View unchanged)
+PASS grid_421 explicit status (positive finite T only)
+PASS grid_421 normalization + all 50 z/H + sum + temperature
+PASS grid_421 repeat is deterministic, no accumulated fuel
+PASS grid_421 requested/effective and protection/extrapolation flags
+PASS grid_421 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_421 C_exp difference within separately derived budget
+PASS grid_422 pure evaluation (params/View unchanged)
+PASS grid_422 explicit status (positive finite T only)
+PASS grid_422 normalization + all 50 z/H + sum + temperature
+PASS grid_422 repeat is deterministic, no accumulated fuel
+PASS grid_422 requested/effective and protection/extrapolation flags
+PASS grid_422 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_422 C_exp difference within separately derived budget
+PASS grid_423 pure evaluation (params/View unchanged)
+PASS grid_423 explicit status (positive finite T only)
+PASS grid_423 normalization + all 50 z/H + sum + temperature
+PASS grid_423 repeat is deterministic, no accumulated fuel
+PASS grid_423 requested/effective and protection/extrapolation flags
+PASS grid_423 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_423 C_exp difference within separately derived budget
+PASS grid_424 pure evaluation (params/View unchanged)
+PASS grid_424 explicit status (positive finite T only)
+PASS grid_424 normalization + all 50 z/H + sum + temperature
+PASS grid_424 repeat is deterministic, no accumulated fuel
+PASS grid_424 requested/effective and protection/extrapolation flags
+PASS grid_424 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_424 C_exp difference within separately derived budget
+PASS grid_430 pure evaluation (params/View unchanged)
+PASS grid_430 explicit status (positive finite T only)
+PASS grid_430 normalization + all 50 z/H + sum + temperature
+PASS grid_430 repeat is deterministic, no accumulated fuel
+PASS grid_430 requested/effective and protection/extrapolation flags
+PASS grid_430 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_430 C_exp difference within separately derived budget
+PASS grid_431 pure evaluation (params/View unchanged)
+PASS grid_431 explicit status (positive finite T only)
+PASS grid_431 normalization + all 50 z/H + sum + temperature
+PASS grid_431 repeat is deterministic, no accumulated fuel
+PASS grid_431 requested/effective and protection/extrapolation flags
+PASS grid_431 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_431 C_exp difference within separately derived budget
+PASS grid_432 pure evaluation (params/View unchanged)
+PASS grid_432 explicit status (positive finite T only)
+PASS grid_432 normalization + all 50 z/H + sum + temperature
+PASS grid_432 repeat is deterministic, no accumulated fuel
+PASS grid_432 requested/effective and protection/extrapolation flags
+PASS grid_432 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_432 C_exp difference within separately derived budget
+PASS grid_433 pure evaluation (params/View unchanged)
+PASS grid_433 explicit status (positive finite T only)
+PASS grid_433 normalization + all 50 z/H + sum + temperature
+PASS grid_433 repeat is deterministic, no accumulated fuel
+PASS grid_433 requested/effective and protection/extrapolation flags
+PASS grid_433 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_433 C_exp difference within separately derived budget
+PASS grid_434 pure evaluation (params/View unchanged)
+PASS grid_434 explicit status (positive finite T only)
+PASS grid_434 normalization + all 50 z/H + sum + temperature
+PASS grid_434 repeat is deterministic, no accumulated fuel
+PASS grid_434 requested/effective and protection/extrapolation flags
+PASS grid_434 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_434 C_exp difference within separately derived budget
+PASS grid_440 pure evaluation (params/View unchanged)
+PASS grid_440 explicit status (positive finite T only)
+PASS grid_440 normalization + all 50 z/H + sum + temperature
+PASS grid_440 repeat is deterministic, no accumulated fuel
+PASS grid_440 requested/effective and protection/extrapolation flags
+PASS grid_440 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_440 C_exp difference within separately derived budget
+PASS grid_441 pure evaluation (params/View unchanged)
+PASS grid_441 explicit status (positive finite T only)
+PASS grid_441 normalization + all 50 z/H + sum + temperature
+PASS grid_441 repeat is deterministic, no accumulated fuel
+PASS grid_441 requested/effective and protection/extrapolation flags
+PASS grid_441 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_441 C_exp difference within separately derived budget
+PASS grid_442 pure evaluation (params/View unchanged)
+PASS grid_442 explicit status (positive finite T only)
+PASS grid_442 normalization + all 50 z/H + sum + temperature
+PASS grid_442 repeat is deterministic, no accumulated fuel
+PASS grid_442 requested/effective and protection/extrapolation flags
+PASS grid_442 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_442 C_exp difference within separately derived budget
+PASS grid_443 pure evaluation (params/View unchanged)
+PASS grid_443 explicit status (positive finite T only)
+PASS grid_443 normalization + all 50 z/H + sum + temperature
+PASS grid_443 repeat is deterministic, no accumulated fuel
+PASS grid_443 requested/effective and protection/extrapolation flags
+PASS grid_443 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_443 C_exp difference within separately derived budget
+PASS grid_444 pure evaluation (params/View unchanged)
+PASS grid_444 explicit status (positive finite T only)
+PASS grid_444 normalization + all 50 z/H + sum + temperature
+PASS grid_444 repeat is deterministic, no accumulated fuel
+PASS grid_444 requested/effective and protection/extrapolation flags
+PASS grid_444 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS grid_444 C_exp difference within separately derived budget
+PASS floor_00 pure evaluation (params/View unchanged)
+PASS floor_00 explicit status (positive finite T only)
+PASS floor_00 normalization + all 50 z/H + sum + temperature
+PASS floor_00 repeat is deterministic, no accumulated fuel
+PASS floor_00 requested/effective and protection/extrapolation flags
+PASS floor_00 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS floor_01 pure evaluation (params/View unchanged)
+PASS floor_01 explicit status (positive finite T only)
+PASS floor_01 normalization + all 50 z/H + sum + temperature
+PASS floor_01 repeat is deterministic, no accumulated fuel
+PASS floor_01 requested/effective and protection/extrapolation flags
+PASS floor_01 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS floor_02 pure evaluation (params/View unchanged)
+PASS floor_02 explicit status (positive finite T only)
+PASS floor_02 normalization + all 50 z/H + sum + temperature
+PASS floor_02 repeat is deterministic, no accumulated fuel
+PASS floor_02 requested/effective and protection/extrapolation flags
+PASS floor_02 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS floor_10 pure evaluation (params/View unchanged)
+PASS floor_10 explicit status (positive finite T only)
+PASS floor_10 normalization + all 50 z/H + sum + temperature
+PASS floor_10 repeat is deterministic, no accumulated fuel
+PASS floor_10 requested/effective and protection/extrapolation flags
+PASS floor_10 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS floor_11 pure evaluation (params/View unchanged)
+PASS floor_11 explicit status (positive finite T only)
+PASS floor_11 normalization + all 50 z/H + sum + temperature
+PASS floor_11 repeat is deterministic, no accumulated fuel
+PASS floor_11 requested/effective and protection/extrapolation flags
+PASS floor_11 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS floor_12 pure evaluation (params/View unchanged)
+PASS floor_12 explicit status (positive finite T only)
+PASS floor_12 normalization + all 50 z/H + sum + temperature
+PASS floor_12 repeat is deterministic, no accumulated fuel
+PASS floor_12 requested/effective and protection/extrapolation flags
+PASS floor_12 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS floor_20 pure evaluation (params/View unchanged)
+PASS floor_20 explicit status (positive finite T only)
+PASS floor_20 normalization + all 50 z/H + sum + temperature
+PASS floor_20 repeat is deterministic, no accumulated fuel
+PASS floor_20 requested/effective and protection/extrapolation flags
+PASS floor_20 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS floor_21 pure evaluation (params/View unchanged)
+PASS floor_21 explicit status (positive finite T only)
+PASS floor_21 normalization + all 50 z/H + sum + temperature
+PASS floor_21 repeat is deterministic, no accumulated fuel
+PASS floor_21 requested/effective and protection/extrapolation flags
+PASS floor_21 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS floor_22 pure evaluation (params/View unchanged)
+PASS floor_22 explicit status (positive finite T only)
+PASS floor_22 normalization + all 50 z/H + sum + temperature
+PASS floor_22 repeat is deterministic, no accumulated fuel
+PASS floor_22 requested/effective and protection/extrapolation flags
+PASS floor_22 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS zero_requests pure evaluation (params/View unchanged)
+PASS zero_requests explicit status (positive finite T only)
+PASS zero_requests normalization + all 50 z/H + sum + temperature
+PASS zero_requests repeat is deterministic, no accumulated fuel
+PASS zero_requests requested/effective and protection/extrapolation flags
+PASS zero_requests outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS negative_requests pure evaluation (params/View unchanged)
+PASS negative_requests explicit status (positive finite T only)
+PASS negative_requests normalization + all 50 z/H + sum + temperature
+PASS negative_requests repeat is deterministic, no accumulated fuel
+PASS negative_requests requested/effective and protection/extrapolation flags
+PASS negative_requests outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS zero_ox_only pure evaluation (params/View unchanged)
+PASS zero_ox_only explicit status (positive finite T only)
+PASS zero_ox_only normalization + all 50 z/H + sum + temperature
+PASS zero_ox_only repeat is deterministic, no accumulated fuel
+PASS zero_ox_only requested/effective and protection/extrapolation flags
+PASS zero_ox_only outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS zero_fuel_only pure evaluation (params/View unchanged)
+PASS zero_fuel_only explicit status (positive finite T only)
+PASS zero_fuel_only normalization + all 50 z/H + sum + temperature
+PASS zero_fuel_only repeat is deterministic, no accumulated fuel
+PASS zero_fuel_only requested/effective and protection/extrapolation flags
+PASS zero_fuel_only outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS source_initialization pure evaluation (params/View unchanged)
+PASS source_initialization explicit status (positive finite T only)
+PASS source_initialization normalization + all 50 z/H + sum + temperature
+PASS source_initialization repeat is deterministic, no accumulated fuel
+PASS source_initialization requested/effective and protection/extrapolation flags
+PASS extrap_pressure_low pure evaluation (params/View unchanged)
+PASS extrap_pressure_low explicit status (positive finite T only)
+PASS extrap_pressure_low normalization + all 50 z/H + sum + temperature
+PASS extrap_pressure_low repeat is deterministic, no accumulated fuel
+PASS extrap_pressure_low requested/effective and protection/extrapolation flags
+PASS extrap_pressure_low outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS extrap_pressure_high pure evaluation (params/View unchanged)
+PASS extrap_pressure_high explicit status (positive finite T only)
+PASS extrap_pressure_high normalization + all 50 z/H + sum + temperature
+PASS extrap_pressure_high repeat is deterministic, no accumulated fuel
+PASS extrap_pressure_high requested/effective and protection/extrapolation flags
+PASS extrap_pressure_high outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS fuel_above_10 pure evaluation (params/View unchanged)
+PASS fuel_above_10 explicit status (positive finite T only)
+PASS fuel_above_10 normalization + all 50 z/H + sum + temperature
+PASS fuel_above_10 repeat is deterministic, no accumulated fuel
+PASS fuel_above_10 requested/effective and protection/extrapolation flags
+PASS fuel_above_10 outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS same_ratio_scaled pure evaluation (params/View unchanged)
+PASS same_ratio_scaled explicit status (positive finite T only)
+PASS same_ratio_scaled normalization + all 50 z/H + sum + temperature
+PASS same_ratio_scaled repeat is deterministic, no accumulated fuel
+PASS same_ratio_scaled requested/effective and protection/extrapolation flags
+PASS same_ratio_scaled outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS extrap_ox_high pure evaluation (params/View unchanged)
+PASS extrap_ox_high explicit status (positive finite T only)
+PASS extrap_ox_high normalization + all 50 z/H + sum + temperature
+PASS extrap_ox_high repeat is deterministic, no accumulated fuel
+PASS extrap_ox_high requested/effective and protection/extrapolation flags
+PASS extrap_ox_high outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS extrap_fuel_high pure evaluation (params/View unchanged)
+PASS extrap_fuel_high explicit status (positive finite T only)
+PASS extrap_fuel_high normalization + all 50 z/H + sum + temperature
+PASS extrap_fuel_high repeat is deterministic, no accumulated fuel
+PASS extrap_fuel_high requested/effective and protection/extrapolation flags
+PASS extrap_fuel_high outlet mass/pressure/static-temperature/ratios and dual Cp
+PASS nonfinite input rejected before floors
+PASS nonfinite input rejected before floors
+PASS nonfinite input rejected before floors
+PASS nonfinite input rejected before floors
+PASS nonfinite input rejected before floors
+PASS nonfinite input rejected before floors
+PASS nonfinite input rejected before floors
+PASS nonfinite input rejected before floors
+PASS nonfinite input rejected before floors
+PASS zero pressure rejected
+PASS negative pressure rejected
+PASS null params rejected
+PASS finite inputs with overflowing normalized output fail explicitly
+PASS every scalar parameter rejects NaN
+PASS every scalar parameter rejects NaN
+PASS every scalar parameter rejects NaN
+PASS every scalar parameter rejects NaN
+PASS every scalar parameter rejects NaN
+PASS every scalar parameter rejects NaN
+PASS every scalar parameter rejects NaN
+PASS every scalar parameter rejects NaN
+PASS every scalar parameter rejects NaN
+PASS every scalar parameter rejects NaN
+PASS every scalar parameter rejects NaN
+PASS every scalar parameter rejects NaN
+PASS every scalar parameter rejects NaN
+PASS every scalar parameter rejects NaN
+PASS every scalar parameter rejects NaN
+PASS zero normalization span rejected
+PASS zero pressure divisor rejected
+PASS hidden count must be 50
+PASS input weights cannot be replaced
+PASS hidden biases cannot be replaced
+PASS output weights cannot be replaced
+PASS property mode must be calibrated
+PASS commented 0.866 multiplier cannot be enabled
+PASS commented Cp 2516 cannot be enabled
+PASS legacy calibration metadata never limits fuel or changes temperature
+PASS apply copies completed final snapshot
+PASS intermediate evaluation cannot update View
+PASS repeated apply does not add fuel
+PASS failed Eval cannot overwrite View
+PASS nonfinite forged success cannot overwrite View
+PASS apply null arguments rejected
+PASS all evidence writes and closes succeeded
+PASS C CSV readback reproduces all actual/reference layers, sums and temperatures
+GG evidence: cases=154 nonpositive_T_cases=1 nodes=7700 max_normalization=1.6655121726216748e-11 max_z=1.0732037480920553e-10 max_H=1.9542744159051217e-16 max_sum=2.5470944797767459e-14 max_T_K=5.0812687391044165e-12 mass_scaled=0
+GG in-range C_exp difference: max_H=3.3306690738754696e-16 max_T_K=4.3200998334214091e-12
+PASS gas-generator: passed=1107 failed=0
